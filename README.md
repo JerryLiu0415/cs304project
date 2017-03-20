@@ -3,7 +3,7 @@
 ## Plan
 * 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples.
 
-## 1b. Summarize all queries we need according to functionalities and demo marking checklist.
+* 1b. Summarize all queries we need according to functionalities and demo marking checklist.
 (1 point) Selection and projection query: pick one query of this category and provide an interface for the user to specify the selection condition and the attributes to be returned.
 
 (1 point) Join query: pick one query of this category and provide an interface for the user to choose this query.
@@ -22,13 +22,13 @@
 
 (3 points) Extra features: Create unique features that your application supports. You can really be creative about this. Some examples are using Bootstrap to prettify your UI, implementing Triggers and Privileges in the database, using any cloud-based databases. See the marking scheme for more examples and the breakdown.
 
-## 2a. Translating all queries into SQL, and run to test if they really work.
+* 2a. Translating all queries into SQL, and run to test if they really work.
 
-## 2b. Updates/Insertions.
+* 2b. Updates/Insertions.
 
-# 3. Refactor SQLs into functions such that the UI class can call them easily.
+* 3. Refactor SQLs into functions such that the UI class can call them easily.
 
-# 4. Combine backend with UI.
+* 4. Combine backend with UI.
 
 
 
