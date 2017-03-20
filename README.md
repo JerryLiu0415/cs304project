@@ -1,8 +1,8 @@
 ## CPSC 304 Project Repository
 
 # Plan
-1. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples.
-   AA
+1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples.
+1b. 
 
 
 
