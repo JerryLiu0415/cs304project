@@ -1,2 +1,5 @@
-# CPSC 304 Project Repository
+## CPSC 304 Project Repository
+
+## Plan
+
 
