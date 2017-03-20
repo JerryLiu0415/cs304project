@@ -1,9 +1,9 @@
 # CPSC 304 Project Repository
 
 ## Plan
-###### 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples.
+#### 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples.
 
-###### 1b. Summarize all queries we need according to functionalities and demo marking checklist.
+#### 1b. Summarize all queries we need according to functionalities and demo marking checklist.
 (1 point) Selection and projection query: pick one query of this category and provide an interface for the user to specify the selection condition and the attributes to be returned.
 
 (1 point) Join query: pick one query of this category and provide an interface for the user to choose this query.
