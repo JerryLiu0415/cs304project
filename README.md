@@ -2,17 +2,21 @@
 
 ## Code Structure
 #### Main Classes
-* BackEndMain.java: Run this main class will connect to sql server without UI.
-* CreateAndPopulateDBMain.java: Run it to reset your database, it overrites any existing table with new ones, and populates each table.
-* MainUI.java: Connect to sql with UI.
+* BackEndMain.java: Running this main class will connect to sql server without UI.
+* CreateAndPopulateDBMain.java: Run it to reset your database to a standard one. It overrites any existing table in masterMatch database with new ones, and populates each table.
+* MainUI.java: Connect to sql with UI comes out.
 
 #### Connection
 * DataBaseConnection.java: Contains methods for connecting to the database, each main method will need to have an instance of DataBaseConnection to connect.
-* QueryAndUpdate.java: Contains methods for sending SQL queries and return their results. For example, all queires looks like "select * from students where age > 20 AND age < 25" can be wrtten as method "findStudentOfAge(a,b)"
+* QueryAndUpdate.java: Contains methods for sending SQL queries and return their results. For example, all queires looks like "select * from students where age > 20 AND age < 25" can be wrtten as "findStudentOfAge(a,b)", such that UI can simply call that in an event handler instead of puting lots of low level codes "stmt.execute("..."), resp.getString(1), ..."
+
+#### DataStructures (May not needed)
+* The result from a query can be parsed into objects such that we can handel them easily.
+
 
 ## Notes 
 * After cloning from the repo, open the "MasterMatch" folder using IntelliJ instead of "cs304project"
-* After cloning other's work, always need to reset the library path for connector from files -> project structor -> libraries and remove any existing library path and add your own.
+* After cloning other's work, always need to reset the library path for connector from files -> project structor -> libraries and remove any existing library path and add your own. (otherwise get driver not found error)
 * Either change your password to 1, or modify line 22 in DataBaseConnection.java to use your own password.
 
 
