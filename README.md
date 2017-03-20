@@ -16,8 +16,9 @@
 
 ## Notes 
 * After cloning from the repo, open the "MasterMatch" folder using IntelliJ instead of "cs304project"
-* After cloning other's work, always need to reset the library path for connector from files -> project structor -> libraries and remove any existing library path and add your own. (otherwise get driver not found error)
+* After cloning other's work, always need to reset the library path for connector by files -> project structure -> libraries and remove (-) any existing library path and add (+) your own. (otherwise get driver not found error)
 * Either change your password to 1, or modify line 22 in DataBaseConnection.java to use your own password.
+* masterMatch database had to be there already.
 
 
 ## Plan
