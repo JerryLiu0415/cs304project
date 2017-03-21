@@ -126,7 +126,41 @@ public class CreateAndPopulateDBMain {
                             "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 105)" +
                             "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 105)" +
                             "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 106)" +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107)";
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107)" +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 108)" +
+
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 109)" +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 110)" +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 111)" +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 112)" +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 113)" +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 114)" +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 115)" +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 116)" +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 117)" +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 118)" +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 119)" +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 120)" +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 121)" +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 122)" +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 123)" +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 124)" +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 125)" +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 126)" +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 127)" +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 128)" +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 129)" +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 130)" +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 131)" +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 132)" +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 133)" +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 134)" +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 135)" +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 136)" +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 137)" +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 138)" +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 139)" +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 140)";
 
 
             stmt.execute(insertStudents);
