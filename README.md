@@ -1,5 +1,8 @@
 # CPSC 304 Project Repository
 
+
+Martial arts tutoring matching system
+=======
 ## Code Structure
 #### Main Classes
 * BackEndMain.java: Running this main class will connect to sql server without UI.
@@ -51,7 +54,6 @@
 #### 3. Refactor SQLs into functions such that the UI class can call them easily. (?)
 
 #### 4. Combine backend with UI. (March 21 - March 31)
-
 
 
 
