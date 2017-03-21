@@ -1,8 +1,11 @@
 # CPSC 304 Project Repository
 
+<<<<<<< HEAD
 
 Martial arts tutoring matching system
 =======
+=======
+>>>>>>> 886a3808376c627a93b1c3a0cd2d5619b1213777
 ## Code Structure
 #### Main Classes
 * BackEndMain.java: Running this main class will connect to sql server without UI.
@@ -57,3 +60,7 @@ Martial arts tutoring matching system
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 886a3808376c627a93b1c3a0cd2d5619b1213777
