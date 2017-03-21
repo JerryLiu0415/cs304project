@@ -119,7 +119,16 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Students " +
                             "(achievements, headline, sid) " +
                             "VALUES " +
-                            "('TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101)";
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101)" +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 102)" +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 104)" +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 103)" +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 105)" +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 105)" +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 106)" +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107)";
+
+
             stmt.execute(insertStudents);
 
             // Create instructor table ===============================================================
@@ -138,7 +147,9 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Instructors " +
                             "(year , headline, inid) " +
                             "VALUES " +
-                            "(10, 'Upcoming group lesson of 20 in Oakridge Center', 901)";
+                            "(10, 'Upcoming group lesson of 20 in Oakridge Center', 901)" +
+                            "(12,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',902";
+
             stmt.execute(insertInstructors);
 
             // The martialArtsType table ===============================================================
