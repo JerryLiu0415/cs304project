@@ -23,7 +23,16 @@
 
 ## Plan
 #### 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples. (- March 21)
-* Users (DONE)
+* Users (Created) + (Populated)
+* Register (Created)
+* Lesson (Created)
+* Book (Created)
+* Plessons (Created)
+* Request (Created)
+* Students (Created) + (Populated)
+* Instructors (Created)
+* MartialArtsType (Created)
+
 
 #### 1b. Summarize all queries we need according to functionalities and demo marking checklist. (- March 21)
 * (1 point) Selection and projection query: pick one query of this category and provide an interface for the user to specify the selection condition and the attributes to be returned.
@@ -44,6 +53,32 @@
 
 * (3 points) Extra features: Create unique features that your application supports. You can really be creative about this. Some examples are using Bootstrap to prettify your UI, implementing Triggers and Privileges in the database, using any cloud-based databases. See the marking scheme for more examples and the breakdown.
 
+###### Queries we have so far
+* 1. Find user with user id "101" and password 55555555 (This query is sent whenever someone tries to log in).
+* 2. Find the student who registered in all lessons held by 'Kevin Ho' (Interested by instructor)
+* 3. Find details of student with id = 101 (Instructor may right click a row in the table to see the details)
+* 4. Find average teaching exp among instructors of age over 20.
+* 5. List all students (name,id) of age between 20 and 30.
+* 6. List all instructos (name , id) with more than 5 years of teaching experience.
+* 7. Find the name and id of students who've sent a request to instructor 'Kevin Ho'
+* 8. Find the average age of studeents for each lesson.
+* 9. Find the average age among the min age of each student grouped by lesson.
+* 10. Find all lessons held by 'Kevin Ho'
+
+###### Updates we have so far
+* 1. Change the password of user 101 to 1
+* 2. Add stuent to some lesson held by 'Kevin Ho'.
+* 3. Add student to 'Kevin Ho', meanwhile remove him from the request table.
+* 4. Add student to some private lesson and remove him from the booking record.
+* 5. Remove student from a lesson, a relationship or a private lesson.
+* 6. Remove student from lesson held by 'Kevin Ho'
+* 7. Add a user. (The user are required to provide essential imformations.)
+* 8. Upate a user's isBlocked field to true. 
+* 9. Remove a lesson from instructor 'Kevin Ho'. (Lots of updates followed by this, for example all students register)
+
+
+
+
 #### 2a. Translating all queries into SQL, and run to test if they really work. (?)
 
 #### 2b. Updates/Insertions. (?)
@@ -51,7 +86,4 @@
 #### 3. Refactor SQLs into functions such that the UI class can call them easily. (?)
 
 #### 4. Combine backend with UI. (March 21 - March 31)
-
-
-
 
