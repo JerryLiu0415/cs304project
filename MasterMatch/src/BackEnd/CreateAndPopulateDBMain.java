@@ -42,7 +42,7 @@ public class CreateAndPopulateDBMain {
                             "isInstructor BOOLEAN," +
                             "isBlocked BOOLEAN," +
                             "password INT NOT NULL," +
-                            "bio VARCHAR (500)," +
+                            "bio VARCHAR (5000)," +
                             "PRIMARY KEY (uid)," +
                             "CONSTRAINT email_unique UNIQUE(email))";
 
@@ -54,7 +54,6 @@ public class CreateAndPopulateDBMain {
                     "VALUES " +
                     // Students:
                     "(101, 'Jerry Liu', 20, 'M', '2205 Lower Mall', 'jl@gmail.com', 778101101, FALSE, FALSE, 55555555)," +
-                    "(102, 'Victoria Wang', 22, 'F', '2205 Lower Mall', 'vw266@hotmail.com', 604111000, FALSE, FALSE, 55555555)," +
                     "(103, 'Ari Knills', 23, 'M', '2200 Earth Ave.', 'akbro@hotmail.com', 604222000, FALSE, FALSE, 55555555)," +
                     "(104, 'Eleanor Knills', 25, 'F', '2200 Earth Ave.', 'eksis@gmail.ca', 604101000, FALSE, FALSE, 55555555)," +
                     "(105, 'Alec Yip', 24, 'M', '1988 Goodary St.', 'ay@badmail.com', 604111800, FALSE, FALSE, 55555555)," +
@@ -63,11 +62,6 @@ public class CreateAndPopulateDBMain {
                     "(108, 'Emily Swift', 18, 'F', '2205 Lower Mall', 'EShaha@gmail.com', 604111830, FALSE, FALSE, 55555555)," +
                     "(109, 'Philip Situ', 33, 'M', '147-8899 River Rd.', 'philst@gmail.com', 604111840, FALSE, FALSE, 55555555)," +
                     "(110, 'Olivia Guo', 50, 'F', '603 Bianca St.', '33687499@qq.com', 604111850, FALSE, FALSE, 55555555)," +
-                    "(111, 'Masako Mihara', 24, 'F', '2205 Lower Mall', 'mnm@gmail.ca', 604111001, FALSE, FALSE, 55555555)," +
-
-                    "(112, 'Alan Jia', 44, 'M', '2001 King Edward St.', 'AJ121@hotmail.com', 2038884747,FALSE, FALSE, 55555555)," +
-                    "(113, 'Eric Khuyabaatar', 20, 'M', '2311 Oak St.', 'EKara@hotmail.com', 6045538274, FALSE, FALSE, 55555555)," +
-                    "(114, 'Yoshiko Asada', 29, 'F', '2301 University Boulevard.', 'Yoasada@gmail.com', 403400600, FALSE, FALSE, 55555555)," +
                     "(115, 'Dawei Zhang', 31, 'M', '2301 University Boulevard.', 'DZ1994@gmail.com', 6042736454, FALSE, FALSE, 55555555)," +
                     "(116, 'Naam Lim', 32, 'M', '3933 W Broadway.', 'naaml@gmail.com', 702211000, FALSE, FALSE, 55555555)," +
                     "(117, 'Jessie Lim', 12, 'F', '3933 W Broadway.' ,'gojessie@gmail.ca', 720111000, FALSE, FALSE, 55555555)," +
@@ -84,12 +78,9 @@ public class CreateAndPopulateDBMain {
                     "(127, 'Steven Kim', 47, 'M', '2456 Gold Ave.', 'kim.s@hotmail.com', 800993392, FALSE, FALSE, 55555555)," +
                     "(128, 'Steve Wagner', 26, 'M', '2234 Oldtown Ave.', 'hind@hotmail.com', 800349392, FALSE, FALSE, 55555555)," +
                     "(129, 'Yuki Miahara', 25, 'F', '4254 Youth Ave.', 'yukiii@hotmail.com', 834993392, FALSE, FALSE, 55555555)," +
-                    "(130, 'Gary Li', 25, 'M', '2454 White Ave.', 'GLi@163.com', 819993392, FALSE, FALSE, 55555555)," +
                     "(131, 'George Ibrahim', 25, 'M', '2400 Heather St.', 'ggi@alumni.ubc.ca', 7789000909, FALSE, FALSE, 55555555)," +
                     "(132, 'Cindy Ibrahim', 30, 'F', '2400 Heather St.', 'myibrahim@gmail.com', 80993392, FALSE, FALSE,55555555)," +
-                    "(133, 'Mia Heydar', 36, 'F', '456 Commercial Dr.', 'miame@alumni.ubc.com',800993192, FALSE, FALSE, 55555555)," +
-                    "(134, 'Yuli Lipnitskaya', 15, 'M', '4299 9th St.', 'yulili@hotmail.com',604929999, FALSE, FALSE, 55555555)," +
-                    "(135, 'Astrid Jobs', 55, 'F', '3546 Sunny Ave.', 'astrjob@gmail.ca', 77899999, FALSE, FALSE, 55555555)," +
+
                     "(136, 'Fahanh Amari', 27, 'M', '478 Commercial Dr.', 'fa010@hotmaill.com', 6042788339, FALSE, FALSE, 55555555)," +
                     "(137, 'Giovanni Rossi', 42, 'M', '4756 Sunny Ave.', 'GioRos@hotmail.com', 999992999, FALSE, FALSE, 55555555)," +
                     "(138, 'Leo Bruno', 65, 'M', '8657 West Mall.', 'leo@goodmail.com', 604999999, FALSE, FALSE, 55555555)," +
@@ -100,14 +91,39 @@ public class CreateAndPopulateDBMain {
                     "(902, 'Kevin Ho', 20, 'M', '2205 West Mall.', 'KACH@mycs.com', 2040389393, TRUE, FALSE, 55555555)," +
                     "(903, 'Bella Sayson', 30, 'F', '2205 East Mall.', 'smith@alumni.ubc.ca', 604111000, TRUE, FALSE, 55555555)," +
                     "(904, 'Cassandra Dion', 24, 'F', '2301 4th St.', '134dion@yahoo.com', 604111000, TRUE, FALSE, 55555555)," +
-                    "(905, 'Yvonne Adalene', 45, 'F', '8775 Cartier St.', 'yvad@yahoo.com', 604111000, TRUE, FALSE, 55555555)," +
                     "(906, 'Ben Chiu', 40, 'M', '2399 Brown St.', 'ben.instructor@gmail.com', 604111000, TRUE, FALSE, 55555555)," +
                     "(907, 'Wenjun Lee', 35, 'M', '1433 No.3 Rd.', '43998000@qq.com', 7923045663, TRUE, FALSE, 55555555)," +
                     "(908, 'Akihiko Suzuki', 46, 'M', '902 Robson St.', 'akizuki@gmail.ca', 7788290987, TRUE, FALSE, 55555555)," +
                     "(909, 'Hyun Song', 28, 'M', '7288 West Boulevard.', 'TaekwonSong@hotmail.com', 604111000, TRUE, FALSE, 55555555)," +
                     "(910, 'Simon Lu', 50, 'M', '2311 Earth Ave.', 'slu167@gmail.com', 604111000, TRUE, FALSE, 55555555)";
 
-            stmt.execute(insertUser);
+            // Users whose address are null
+            String insertUserAddNull = "INSERT INTO Users " +
+                    "(uid, uname, age, gender, email, phone, isInstructor, isBlocked, password) " +
+                    "VALUES " +
+                    "(111, 'Masako Mihara', 24, 'F', 'mnm@gmail.ca', 604111001, FALSE, FALSE, 55555555)," +
+
+                    "(112, 'Alan Jia', 44, 'M', 'AJ121@hotmail.com', 2038884747,FALSE, FALSE, 55555555)," +
+                    "(113, 'Eric Khuyabaatar', 20, 'M', 'EKara@hotmail.com', 6045538274, FALSE, FALSE, 55555555)," +
+                    "(114, 'Yoshiko Asada', 29, 'F', 'Yoasada@gmail.com', 403400600, FALSE, FALSE, 55555555)" ;
+
+            // Users whose cellphone is null
+            String insertUserPhoNull = "INSERT INTO Users "+
+                    "(uid, uname, age, gender, address, email, isInstructor, isBlocked, password) " +
+                    "VALUES " +
+                    "(133, 'Mia Heydar', 36, 'F', '456 Commercial Dr.', 'miame@alumni.ubc.com', FALSE, FALSE, 55555555)," +
+                    "(134, 'Yuli Lipnitskaya', 15, 'M', '4299 9th St.', 'yulili@hotmail.com', FALSE, FALSE, 55555555)," +
+                    "(135, 'Astrid Jobs', 55, 'F', '3546 Sunny Ave.', 'astrjob@gmail.ca', FALSE, FALSE, 55555555)," +
+                    "(905, 'Yvonne Adalene', 45, 'F', '8775 Cartier St.', 'yvad@yahoo.com', TRUE, FALSE, 55555555)," +
+                    "(130, 'Gary Li', 25, 'M', '2454 White Ave.', 'GLi@163.com', FALSE, FALSE, 55555555)";
+
+            // Users who have Bio (bio not null)
+            String insertUserHasBio = "INSERT INTO Users "+
+                    "(uid, uname, age, gender, address, email, phone, isInstructor, isBlocked, password, bio) " +
+                    "VALUES " +
+                    "(102, 'Victoria Wang', 22, 'F', '2205 Lower Mall', 'vw266@hotmail.com', 604111000, FALSE, FALSE, 55555555," +
+                    " 'I am a UBC student who loves Martial Arts. I had some experiences with Taekwondo and Taichi, but now I want to focus more on Kungfu and in particular, combat. " +
+                    " I think my character gets better through learning how to control my body in Kungfu training. I also do other sports, such as figure skating and ping pong. They help with my Kingfu as well.')";
 
             // Create student table ===============================================================
             String addUserSchemaStu =
@@ -173,6 +189,7 @@ public class CreateAndPopulateDBMain {
             String addUserSchemaInst =
                     "CREATE TABLE Instructors(" +
                             "year INT," +
+                            "type VARCHAR (12)," +
                             "headline VARCHAR (400)," +
                             "inid INT NOT NULL,"+
                             "FOREIGN KEY (inid) REFERENCES Users(uid))";
@@ -184,20 +201,19 @@ public class CreateAndPopulateDBMain {
             // Populate a tuple for Instructors
             String insertInstructors =
                     "INSERT INTO Instructors " +
-                            "(year , headline, inid) " +
+                            "(year , type, headline, inid) " +
                             "VALUES " +
-                            "(7, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
-                            "(10, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 902)," +
-                            "(8, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 903)," +
-                            "(5, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 904)," +
-                            "(2, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 905)," +
-                            "(4, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 906)," +
-                            "(5, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 907)," +
-                            "(6, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 908)," +
-                            "(4, 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 909)";
+                            "(7, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
+                            "(10, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 902)," +
+                            "(8, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 903)," +
+                            "(5, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 904)," +
+                            "(2, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 905)," +
+                            "(4, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 906)," +
+                            "(5, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 907)," +
+                            "(6, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 908)," +
+                            "(4, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 909)";
 
-            stmt.execute(insertInstructors);
-            stmt.execute(insertStudents);
+
 
             // The martialArtsType table ===============================================================
             String addMartialArtsType =
@@ -225,7 +241,7 @@ public class CreateAndPopulateDBMain {
                             "(inid , sid, pref) " +
                             "VALUES " +
                             "(901, 101, 'BecomeStu')";
-            stmt.execute(insertRequests);
+
 
             // Create  table Plessons ===============================================================
             String addPl =
@@ -249,7 +265,7 @@ public class CreateAndPopulateDBMain {
                             "(plid, sid, inid, loc, startTime, endTime, price) " +
                             "VALUES " +
                             "('p5000', 101, 901, '401, 8918 Marine DR.', '11:00', '13:00', 100.00)";
-            stmt.execute(insertPl);
+
 
             // Create Book table ===============================================================
             String addUserSchemaBook =
@@ -269,7 +285,7 @@ public class CreateAndPopulateDBMain {
                             "(sid, plid) " +
                             "VALUES " +
                             "(101, 'p5000')";
-            stmt.execute(insertBook);
+
 
             // Create Lesson table =============================================================
             String addLesson =
@@ -293,7 +309,19 @@ public class CreateAndPopulateDBMain {
                             "FOREIGN KEY (lid) REFERENCES Lesson (lid))";
 
 
+
             stmt.execute(addRegister);
+
+            // Execute all insertion statements here, they are ordered in parent -> child way
+            stmt.execute(insertUser);
+            stmt.execute(insertUserAddNull);
+            stmt.execute(insertUserPhoNull);
+            stmt.execute(insertUserHasBio);
+            stmt.execute(insertInstructors);
+            stmt.execute(insertStudents);
+            stmt.execute(insertRequests);
+            stmt.execute(insertPl);
+            stmt.execute(insertBook);
 
 
         } catch (SQLException e) {
@@ -324,3 +352,4 @@ public class CreateAndPopulateDBMain {
 
 
 }
+
