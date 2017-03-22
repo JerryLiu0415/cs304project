@@ -37,11 +37,17 @@ public class MainUI extends JFrame {
             }
         };
 
-        card1.setLayout(new GridLayout(0,2));
-        card1.add(new JTextField(20));
-        card1.add(new JButton("Button 1"));
-        card1.add(new JButton("Button 2"));
-        card1.add(new JButton("Button 3"));
+        card1.setLayout(new GridLayout(4,8));
+        for (int i = 0; i < 31; i++) {
+            String s = Integer.toString(i);
+            card1.add(new JButton("Button " + s));
+        }
+        JPanel holder = new JPanel();
+        holder.setLayout(new GridLayout());
+        holder.add(new Button("GG"));
+        holder.add(new Button("HH"));
+        holder.add(new Button("II"));
+        card1.add(holder);
 
         status = new StatusPannel();
         calendar = new AccountPannel();
