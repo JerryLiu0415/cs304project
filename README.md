@@ -24,14 +24,14 @@
 ## Plan
 #### 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples. (- March 21)
 * Users (Created) + (Populated)
-* Register (Created)
-* Lesson (Created)
-* Book (Created)
-* Plessons (Created)
-* Request (Created)
-* Students (Created) + (Populated)
-* Instructors (Created)
-* MartialArtsType (Created)
+* Register (Created) C 
+* Lesson (Created) C
+* Book (Created) K
+* Plessons (Created) C
+* Request (Created) K
+* Students (Created) + (Populated) 
+* Instructors (Created) K
+* MartialArtsType (Created) K
 
 
 #### 1b. Summarize all queries we need according to functionalities and demo marking checklist. (- March 21)
