@@ -258,23 +258,21 @@ public class CreateAndPopulateDBMain {
                     "CREATE TABLE Plessons(" +
                             "plid CHAR (10) NOT NULL," +
                             "sid INT NOT NULL," +
-                            "inid INT NOT NULL,"+
                             "loc VARCHAR (200) NOT NULL," +
                             "startTime CHAR (5) NOT NULL,"+
                             "endTime CHAR (5) NOT NULL," +
                             "price FLOAT NOT NULL," +
                             "PRIMARY KEY (plid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))" ;
+                            "FOREIGN KEY (sid) REFERENCES Students (sid))" ;
 
             stmt.execute(addPl);
 
             // Populate a tuple for Plessons
             String insertPl =
                     "INSERT INTO Plessons " +
-                            "(plid, sid, inid, loc, startTime, endTime, price) " +
+                            "(plid, sid, loc, startTime, endTime, price) " +
                             "VALUES " +
-                            "('p5000', 101, 901, '401, 8918 Marine DR.', '11:00', '13:00', 100.00)";
+                            "('p5000', 101, '401, 8918 Marine DR.', '11:00', '13:00', 100.00)";
 
 
             // Create Book table ===============================================================
@@ -316,7 +314,7 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Lesson " +
                             "(lid, inid, loc, startTime, endTime, price, capacity) " +
                             "VALUES " +
-                            "(700, 908, 'artbus', '11:00', '12:00', 100, 10 )";
+                            "('l700', 908, 'artbus', '11:00', '12:00', 100, 10 )";
 
 
             // Create Register table =============================================================
