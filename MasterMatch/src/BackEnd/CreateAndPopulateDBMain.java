@@ -313,6 +313,8 @@ public class CreateAndPopulateDBMain {
             stmt.execute(addRegister);
 
             // Execute all insertion statements here, they are ordered in parent -> child way
+            // Keep the order of the executes to this
+            // insertuser, insertuseraddnull,
             stmt.execute(insertUser);
             stmt.execute(insertUserAddNull);
             stmt.execute(insertUserPhoNull);
