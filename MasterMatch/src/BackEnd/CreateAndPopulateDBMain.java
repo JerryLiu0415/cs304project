@@ -306,9 +306,18 @@ public class CreateAndPopulateDBMain {
                             "startTime CHAR (5) NOT NULL,"+
                             "endTime CHAR (5) NOT NULL," +
                             "price FLOAT NOT NULL," +
+                            "capacity INT NOT NULL," +
                             "PRIMARY KEY (lid)," +
                             "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
             stmt.execute(addLesson);
+
+            // Populate a tuple for lesson
+            String insertLesson =
+                    "INSERT INTO Lesson " +
+                            "(lid, inid, loc, startTime, endTime, price, capacity) " +
+                            "VALUES " +
+                            "(700, 908, 'artbus', '11:00', '12:00', 100, 10 )";
+
 
             // Create Register table =============================================================
             String addRegister =
@@ -332,6 +341,7 @@ public class CreateAndPopulateDBMain {
             stmt.execute(insertRequests);
             stmt.execute(insertPl);
             stmt.execute(insertBook);
+            stmt.execute(insertLesson);
 
 
         } catch (SQLException e) {
