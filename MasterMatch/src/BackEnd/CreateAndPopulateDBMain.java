@@ -17,11 +17,13 @@ public class CreateAndPopulateDBMain {
         try {
             Statement stmt = dbconn.conn.createStatement();
 
+            safeDelete("Register");
+            safeDelete("Lesson");
             safeDelete("Book");
             safeDelete("Plessons");
             safeDelete("Request");
-            safeDelete("Instructors");
             safeDelete("Students");
+            safeDelete("Instructors");
             safeDelete("MartialArtsType");
             safeDelete("Users");
 
@@ -36,165 +38,180 @@ public class CreateAndPopulateDBMain {
                             "gender CHAR (1)," +
                             "address VARCHAR (40)," +
                             "email VARCHAR (30) NOT NULL," +
-                            "phone INT," +
+                            "phone BIGINT," +
                             "isInstructor BOOLEAN," +
                             "isBlocked BOOLEAN," +
-                            "bio VARCHAR (500)," +
+                            "password INT NOT NULL," +
+                            "bio VARCHAR (5000)," +
                             "PRIMARY KEY (uid)," +
                             "CONSTRAINT email_unique UNIQUE(email))";
 
             stmt.execute(addUserSchema);
-            
+
             // Populate tuple after schemas are created
             String insertUser = "INSERT INTO Users " +
-                            "(uid, uname, age, gender, address, email, phone, isInstructor, isBlocked) " +
-                            "VALUES " +
-                            "(101, 'Jerry Liu', 20, 'M', '2205 Lower Mall', 'jl@gmail.com', 778101101, FALSE, FALSE)," +
-                            "(102, 'Aaron Smith', 36, 'M', '2311 Moon Ave.', 'AS36@hotmail.com', 604111000, FALSE, FALSE)," +
-                            "(103, 'Victoria Wang', 22, 'F', '2200 Earth Ave.', 'VW@coldmail.com', 604222000, FALSE, FALSE)," +
-                            "(104, 'Alan Alison', 25, 'M', '2222 Good Ave.', 'AA@goodmail.com', 604101000, FALSE, FALSE)," +
-                            "(105, 'Alec Alison', 24, 'M', '2222 Good Ave.', 'AL@badmail.com', 604111800, FALSE, FALSE)," +
-                            "(106, 'Simon Alison', 22, 'M', '2222 Good Ave.', 'SA@hotmail.com', 604111810, FALSE, FALSE)," +
-                            "(107, 'Roger Alison', 17, 'F', '2220 Bad Ave.', 'RA@gmail.com', 604111820, FALSE, FALSE)," +
-                            "(108, 'Roger Lisa', 18, 'F', '2205 Lower Mall', 'RL@gmail.com', 604111830, FALSE, FALSE)," +
-                            "(109, 'Philip Alison', 33, 'M', '2205 Lower Mall', 'PA@gmail.com', 604111840, FALSE, FALSE)," +
-                            "(110, 'Mycroft Olivia', 50, 'M', '2205 Lower Mall', 'MO@gmail.com', 604111850, FALSE, FALSE)," +
-                            "(111, 'Mark Abigail', 24, 'M', '2205 Lower Mall', 'MA@gmail.com', 604111001, FALSE, FALSE)," +
+                    "(uid, uname, age, gender, address, email, phone, isInstructor, isBlocked, password) " +
+                    "VALUES " +
+                    // Students:
+                    "(101, 'Jerry Liu', 20, 'M', '2205 Lower Mall', 'jl@gmail.com', 778101101, FALSE, FALSE, 55555555)," +
+                    "(103, 'Ari Knills', 23, 'M', '2200 Earth Ave.', 'akbro@hotmail.com', 604222000, FALSE, FALSE, 55555555)," +
+                    "(104, 'Eleanor Knills', 25, 'F', '2200 Earth Ave.', 'eksis@gmail.ca', 604101000, FALSE, FALSE, 55555555)," +
+                    "(105, 'Alec Yip', 24, 'M', '1988 Goodary St.', 'ay@badmail.com', 604111800, FALSE, FALSE, 55555555)," +
+                    "(106, 'Simon Kennedy', 22, 'M', '3222 Alison Road.', 'sky@hotmail.com', 604111810, FALSE, FALSE,55555555)," +
+                    "(107, 'Roger Brown', 17, 'M', '2220 W Broadway.', 'Rb@gmail.com', 604111820, FALSE, FALSE, 55555555)," +
+                    "(108, 'Emily Swift', 18, 'F', '2205 Lower Mall', 'EShaha@gmail.com', 604111830, FALSE, FALSE, 55555555)," +
+                    "(109, 'Philip Situ', 33, 'M', '147-8899 River Rd.', 'philst@gmail.com', 604111840, FALSE, FALSE, 55555555)," +
+                    "(110, 'Olivia Guo', 50, 'F', '603 Bianca St.', '33687499@qq.com', 604111850, FALSE, FALSE, 55555555)," +
+                    "(115, 'Dawei Zhang', 31, 'M', '2301 University Boulevard.', 'DZ1994@gmail.com', 6042736454, FALSE, FALSE, 55555555)," +
+                    "(116, 'Naam Lim', 32, 'M', '3933 W Broadway.', 'naaml@gmail.com', 702211000, FALSE, FALSE, 55555555)," +
+                    "(117, 'Jessie Lim', 12, 'F', '3933 W Broadway.' ,'gojessie@gmail.ca', 720111000, FALSE, FALSE, 55555555)," +
+                    "(118, 'Aaron Cambridge', 32, 'M', '900 Marine Dr.', 'ABC@hotmail.com', 705511000, FALSE, FALSE, 55555555)," +
+                    "(119, 'Mario Zhang', 23, 'M', '1988 Yew St.', 'mariozh@gmail.ca', 700771000, FALSE, FALSE, 55555555)," +
+                    "(120, 'Silvia Ho', 22, 'F', '2044 Higher Mall.', 'silvershine@gmail.hk', 700111800, FALSE, FALSE, 55555555)," +
+                    "(121, 'Kelvin J. White', 22, 'M', '2044 Higher Mall.', 'kjw@hotmail.com', 700177000, FALSE, FALSE, 55555555)," +
+                    "(122, 'Karen Choi', 66, 'F', '390 King Edward St.', 'KCloveMR@yahoo.com', 700119900, FALSE, FALSE, 55555555)," +
 
-                            "(112, 'Alan Wang', 21, 'F', '2001 UBC Ave.', 'AWL@hotmail.com', 700111000, FALSE, FALSE)," +
-                            "(113, 'Blan Zhang', 20, 'M', '2311 UAC Ave.', 'BZ@hotmail.com', 403400400, FALSE, FALSE)," +
-                            "(114, 'Clan Wang', 29, 'M', '2311 UCC Ave.', 'CW@gmail.com', 403400600, FALSE, FALSE)," +
-                            "(115, 'Dlan Zhang', 31, 'F', '1010 UDC Ave.', 'DZ@gmail.com', 403400422, FALSE, FALSE)," +
-                            "(116, 'Elan Wang', 32, 'F', '1022 SFU Ave.', 'EW@gmail.com', 702211000, FALSE, FALSE)," +
-                            "(117, 'Flan Zhang', 32, 'M', '1022 SFU Ave.', 'FZ@gmail.com', 720111000, FALSE, FALSE)," +
-                            "(118, 'Garon Wang', 32, 'F', '1022 SFU Ave.', 'AAA@hotmail.com', 705511000, FALSE, FALSE)," +
-                            "(119, 'Haron Zhang', 23, 'M', '1022 SFU Ave.', 'BBB@fastmail.com', 700771000, FALSE, FALSE)," +
-                            "(120, 'Iaron Zhang', 22, 'F', '1022 SFU Ave.', 'CCC@fastmail.com', 700111800, FALSE, FALSE)," +
-                            "(121, 'Jaron Zhang', 22, 'M', '1022 SFU Ave.', 'DDD@fastmail.com', 700177000, FALSE, FALSE)," +
-                            "(122, 'Karon Wang', 22, 'F', '1022 SFU Ave.', 'RRR@fastmail.com', 700119900, FALSE, FALSE)," +
+                    "(123, 'Yuna Kim', 17, 'F', '1762 Legend Highway', 'ykchamp@gmail.com', 800999339, FALSE, FALSE, 55555555)," +
+                    "(124, 'Yuna Sotnikova', 42, 'F', '3456 University Boulevard', 'ys@gmail.com', 800999393, FALSE, FALSE, 55555555)," +
+                    "(125, 'Aaron Zhao', 16, 'M', '2474 Larch Ave.', 'azhao@163.com', 203993392, FALSE, FALSE, 55555555)," +
+                    "(126, 'Hannah Leung', 19, 'F', '2645 Trutch Ave.', 'hleung@hotmail.com', 203939332, FALSE, FALSE, 55555555)," +
+                    "(127, 'Steven Kim', 47, 'M', '2456 Gold Ave.', 'kim.s@hotmail.com', 800993392, FALSE, FALSE, 55555555)," +
+                    "(128, 'Steve Wagner', 26, 'M', '2234 Oldtown Ave.', 'hind@hotmail.com', 800349392, FALSE, FALSE, 55555555)," +
+                    "(129, 'Yuki Miahara', 25, 'F', '4254 Youth Ave.', 'yukiii@hotmail.com', 834993392, FALSE, FALSE, 55555555)," +
+                    "(131, 'George Ibrahim', 25, 'M', '2400 Heather St.', 'ggi@alumni.ubc.ca', 7789000909, FALSE, FALSE, 55555555)," +
+                    "(132, 'Cindy Ibrahim', 30, 'F', '2400 Heather St.', 'myibrahim@gmail.com', 80993392, FALSE, FALSE,55555555)," +
 
-                            "(123, 'Karen Steven', 17, 'M', '6446 Big Ave.', 'KD@fastmail.com', 800999339, FALSE, FALSE)," +
-                            "(124, 'Aaren Colin', 18, 'F', '3244 Small Mall', 'FGH@fastmail.com', 800999393, FALSE, FALSE)," +
-                            "(125, 'Baren Steven', 16, 'M', '2474 Large Ave.', 'DG@fastmail.com', 800993392, FALSE, FALSE)," +
-                            "(126, 'Caren Colin', 27, 'M', '2645 Hot Ave.', 'DB@hotmail.com', 800939332, FALSE, FALSE)," +
-                            "(127, 'Daren Steven', 27, 'M', '2456 Cold Ave.', 'DG@hotmail.com', 800993392, FALSE, FALSE)," +
-                            "(128, 'Earon Colin', 26, 'M', '2234 Old Ave.', 'V@hotmail.com', 800349392, FALSE, FALSE)," +
-                            "(129, 'Faron Steven', 25, 'M', '4254 Young Ave.', 'EV@fastmail.com', 834993392, FALSE, FALSE)," +
-                            "(130, 'Garon George', 25, 'M', '2454 White Ave.', 'GD@hotmail.com', 819993392, FALSE, FALSE)," +
-                            "(131, 'Ayn Steven', 25, 'F', '2452 Black Ave.', 'DB@UBCmail.com', 801993392, FALSE, FALSE)," +
-                            "(132, 'Byn George', 36, 'F', '234 Black Ave.', 'DB@fastmail.com', 80993392, FALSE, FALSE)," +
-                            "(133, 'Cyn Steven', 36, 'F', '456 Black Ave.', 'DFB@fastmail.com',800993192, FALSE, FALSE)," +
-                            "(134, 'Dyn George', 25, 'F', '457 Black Ave.', 'DRR@hotmail.com',999929999, FALSE, FALSE)," +
-                            "(135, 'Eyn Steven', 55, 'F', '3546 Sunny Ave.', 'DVF@fastmail.com', 99999999, FALSE, FALSE)," +
-                            "(136, 'Fyn George', 27, 'F', '457 Mid Ave.', 'XCV@goodmail.com', 999299999, FALSE, FALSE)," +
-                            "(137, 'Gyn Steven', 42, 'F', '4756 Sunny Ave.', 'TNH@hotmail.com', 999992999, FALSE, FALSE)," +
-                            "(138, 'Hyn George', 45, 'F', '8657 Mid Ave.', 'RRG@goodmail.com', 996999999, FALSE, FALSE)," +
-                            "(139, 'Iyn Steven', 24, 'F', '3456 Mid Ave.', 'GG@goodmail.com', 999699999, FALSE, FALSE)," +
-                            "(140, 'Jyn George', 26, 'F', '4567 Mid Ave.', 'DFDB@hotmail.com', 999779999, FALSE, FALSE)," +
+                    "(136, 'Fahanh Amari', 27, 'M', '478 Commercial Dr.', 'fa010@hotmaill.com', 6042788339, FALSE, FALSE, 55555555)," +
+                    "(137, 'Giovanni Rossi', 42, 'M', '4756 Sunny Ave.', 'GioRos@hotmail.com', 999992999, FALSE, FALSE, 55555555)," +
+                    "(138, 'Leo Bruno', 65, 'M', '8657 West Mall.', 'leo@goodmail.com', 604999999, FALSE, FALSE, 55555555)," +
+                    "(139, 'Suzanne Schneider', 19, 'F', '270-4578 71th St.', 'ss.this@gmail.ca', 7789026453, FALSE, FALSE, 55555555)," +
+                    "(140, 'Abel Durand', 39, 'M', '9800 Swing Rd.', 'ad.me@hotmail.com', 604779999, FALSE, FALSE, 55555555)," +
+                    // Instructors:
+                    "(901, 'Eric Kim', 36, 'M', '2311 Moon Ave.', 'erick@hotmail.com', 604111000, TRUE, FALSE, 55555555)," +
+                    "(902, 'Kevin Ho', 20, 'M', '2205 West Mall.', 'KACH@mycs.com', 2040389393, TRUE, FALSE, 55555555)," +
+                    "(903, 'Bella Sayson', 30, 'F', '2205 East Mall.', 'smith@alumni.ubc.ca', 604111000, TRUE, FALSE, 55555555)," +
+                    "(904, 'Cassandra Dion', 24, 'F', '2301 4th St.', '134dion@yahoo.com', 604111000, TRUE, FALSE, 55555555)," +
+                    "(906, 'Ben Chiu', 40, 'M', '2399 Brown St.', 'ben.instructor@gmail.com', 604111000, TRUE, FALSE, 55555555)," +
+                    "(907, 'Wenjun Lee', 35, 'M', '1433 No.3 Rd.', '43998000@qq.com', 7923045663, TRUE, FALSE, 55555555)," +
+                    "(908, 'Akihiko Suzuki', 46, 'M', '902 Robson St.', 'akizuki@gmail.ca', 7788290987, TRUE, FALSE, 55555555)," +
+                    "(909, 'Hyun Song', 28, 'M', '7288 West Boulevard.', 'TaekwonSong@hotmail.com', 604111000, TRUE, FALSE, 55555555)," +
+                    "(910, 'Simon Lu', 50, 'M', '2311 Earth Ave.', 'slu167@gmail.com', 604111000, TRUE, FALSE, 55555555)";
 
-                            "(901, 'Aaron Smith', 36, 'M', '2311 Moon Ave.', 'AS36@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(902, 'Kevin A-ch', 20, 'M', '2205 West Mall.', 'KACH@UBCmail.com', 2040389393, TRUE, FALSE)," +
-                            "(903, 'Baron Smith', 22, 'M', '2011 Earth Ave.', '13@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(904, 'Caron Smith', 24, 'M', '2301 Earth St.', '134@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(905, 'Daron Smith', 45, 'M', '2311 Earth Ave.', 'dghe@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(906, 'Earon Smith', 57, 'M', '2311 Earth St.', 'eeh@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(907, 'Faron Smith', 35, 'M', '2311 Earth St.', 'dht@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(908, 'Garon Smith', 46, 'M', '2311 Earth Ave.', 'etjetj@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(909, 'Haron Smith', 28, 'M', '2311 Earth Ave.', 'eth3t@UBCmail.com', 604111000, TRUE, FALSE)," +
-                            "(910, 'Iaron Smith', 26, 'M', '2311 Earth Ave.', 'ethe@UBCmail.com', 604111000, TRUE, FALSE)";
-            stmt.execute(insertUser);
+            // Users whose address are null
+            String insertUserAddNull = "INSERT INTO Users " +
+                    "(uid, uname, age, gender, email, phone, isInstructor, isBlocked, password) " +
+                    "VALUES " +
+                    "(111, 'Masako Mihara', 24, 'F', 'mnm@gmail.ca', 604111001, FALSE, FALSE, 55555555)," +
+
+                    "(112, 'Alan Jia', 44, 'M', 'AJ121@hotmail.com', 2038884747,FALSE, FALSE, 55555555)," +
+                    "(113, 'Eric Khuyabaatar', 20, 'M', 'EKara@hotmail.com', 6045538274, FALSE, FALSE, 55555555)," +
+                    "(114, 'Yoshiko Asada', 29, 'F', 'Yoasada@gmail.com', 403400600, FALSE, FALSE, 55555555)";
+
+            // Users whose cellphone is null
+            String insertUserPhoNull = "INSERT INTO Users " +
+                    "(uid, uname, age, gender, address, email, isInstructor, isBlocked, password) " +
+                    "VALUES " +
+                    "(133, 'Mia Heydar', 36, 'F', '456 Commercial Dr.', 'miame@alumni.ubc.com', FALSE, FALSE, 55555555)," +
+                    "(134, 'Yuli Lipnitskaya', 15, 'M', '4299 9th St.', 'yulili@hotmail.com', FALSE, FALSE, 55555555)," +
+                    "(135, 'Astrid Jobs', 55, 'F', '3546 Sunny Ave.', 'astrjob@gmail.ca', FALSE, FALSE, 55555555)," +
+                    "(905, 'Yvonne Adalene', 45, 'F', '8775 Cartier St.', 'yvad@yahoo.com', TRUE, FALSE, 55555555)," +
+                    "(130, 'Gary Li', 25, 'M', '2454 White Ave.', 'GLi@163.com', FALSE, FALSE, 55555555)";
+
+            // Users who have Bio (bio not null)
+            String insertUserHasBio = "INSERT INTO Users " +
+                    "(uid, uname, age, gender, address, email, phone, isInstructor, isBlocked, password, bio) " +
+                    "VALUES " +
+                    "(102, 'Victoria Wang', 22, 'F', '2205 Lower Mall', 'vw266@hotmail.com', 604111000, FALSE, FALSE, 55555555," +
+                    " 'I am a UBC student who loves Martial Arts. I had some experiences with Taekwondo and Taichi, but now I want to focus more on Kungfu and in particular, combat. " +
+                    " I think my character gets better through learning how to control my body in Kungfu training. I also do other sports, such as figure skating and ping pong. They help with my Kingfu as well.')";
 
             // Create student table ===============================================================
             String addUserSchemaStu =
                     "CREATE TABLE Students(" +
-                            "achievements VARCHAR (200)," +
-                            "headline VARCHAR (400)," +
-                            "sid INT NOT NULL,"+
-                            "FOREIGN KEY (sid) REFERENCES Users(uid))";
+                            "achievements VARCHAR (800)," +
+                            "headline VARCHAR (800)," +
+                            "sid INT NOT NULL," +
+                            "inid INT," +
+                            "FOREIGN KEY (sid) REFERENCES Users(uid)," +
+                            "FOREIGN KEY (inid) REFERENCES Instructors(inid))";
             // an example of headline could be "searching for a passionate KungFu instructor"
-            stmt.execute(addUserSchemaStu);
+
 
             // Populate a tuple for Students
             String insertStudents =
                     "INSERT INTO Students " +
-                            "(achievements, headline, sid) " +
+                            "(achievements, headline, sid, inid) " +
                             "VALUES " +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101)" +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 102)" +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 104)" +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 103)" +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 105)" +
-                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 105)" +
-                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 106)" +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107)" +
-                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 108)" +
-
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 109)" +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 110)" +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 111)" +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 112)" +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 113)" +
-                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 114)" +
-                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 115)" +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 116)" +
-                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 117)" +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 118)" +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 119)" +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 120)" +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 121)" +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 122)" +
-                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 123)" +
-                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 124)" +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 125)" +
-                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 126)" +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 127)" +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 128)" +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 129)" +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 130)" +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 131)" +
-                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 132)" +
-                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 133)" +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 134)" +
-                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 135)" +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 136)" +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 137)" +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 138)" +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 139)" +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I've trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 140)";
-
-
-            stmt.execute(insertStudents);
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101, 901)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 102, 901)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 104, 901)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 103, 901)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 105, 902)," +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 105, 902)," +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 106, 902)," +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107, 902)," +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 108, 902)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 109, 902)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 110, 902)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 111, 902)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 112, 903)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 113, 903)," +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 114, 903)," +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 115, 903)," +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 116, 903)," +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 117, 903)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 118, 903)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 119, 904)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 120, 904)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 121, 905)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 122, 905)," +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 123, 905)," +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 124, 905)," +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 125, 905)," +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 126, 905)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 127, 905)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 128, 906)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 129, 906)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 130, 906)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 131, 906)," +
+                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 132, 907 )," +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 133, 907)," +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 134, 908)," +
+                            "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 135, 908)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 136, 908)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 137, 908)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 138, 909)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 139, 909)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 140, 909)";
 
             // Create instructor table ===============================================================
             String addUserSchemaInst =
                     "CREATE TABLE Instructors(" +
                             "year INT," +
+                            "type VARCHAR (12)," +
                             "headline VARCHAR (400)," +
-                            "inid INT NOT NULL,"+
+                            "inid INT NOT NULL," +
                             "FOREIGN KEY (inid) REFERENCES Users(uid))";
             // an example of headline could be "Upcoming group lesson of 20 in ST building"
 
             stmt.execute(addUserSchemaInst);
+            stmt.execute(addUserSchemaStu);
 
             // Populate a tuple for Instructors
             String insertInstructors =
                     "INSERT INTO Instructors " +
-                            "(year , headline, inid) " +
+                            "(year , type, headline, inid) " +
                             "VALUES " +
-                            "(10, 'Upcoming group lesson of 20 in Oakridge Center', 901)" +
-                            "(12,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',902" +
-                            "(22, 'Group Lessons every Monday 7pm to 9pm ', 903)" +
+                            "(7, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
+                            "(10, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 902)," +
+                            "(8, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 903)," +
+                            "(5, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 904)," +
+                            "(2, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 905)," +
+                            "(4, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 906)," +
+                            "(5, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 907)," +
+                            "(6, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 908)," +
+                            "(4, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 909)";
 
-
-                            "(32,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',905" +
-                            "(34, 'Upcoming group lesson of 20 in Oakridge Center', 905)" +
-                            "(26,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',906" +
-                            "(26, 'Upcoming group lesson of 20 in Oakridge Center', 907)" +
-                            "(50,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',908" +
-                            "(42, 'Upcoming group lesson of 20 in Oakridge Center', 909)" +
-                            "(61,'Group lesson occuring every Friday's from 4pm to 6pm in the NEST',910";
-
-            stmt.execute(insertInstructors);
 
             // The martialArtsType table ===============================================================
             String addMartialArtsType =
@@ -209,7 +226,7 @@ public class CreateAndPopulateDBMain {
             String insertMartialArtsType =
                     "INSERT INTO MartialArtsType " +
                             "VALUES" +
-                    "('Wushu','Kung Fu','40')";
+                            "('Wushu','Kung Fu','40')";
 
             stmt.execute(insertStudents);
 
@@ -231,23 +248,23 @@ public class CreateAndPopulateDBMain {
                             "(inid , sid, pref) " +
                             "VALUES " +
                             "(901, 101, 'BecomeStu')";
-            stmt.execute(insertRequests);
+
 
             // Create  table Plessons ===============================================================
-            String addUserSchemaPl =
+            String addPl =
                     "CREATE TABLE Plessons(" +
                             "plid CHAR (10) NOT NULL," +
                             "sid INT NOT NULL," +
-                            "inid INT NOT NULL,"+
+                            "inid INT NOT NULL," +
                             "loc VARCHAR (200) NOT NULL," +
-                            "startTime CHAR (5) NOT NULL,"+
+                            "startTime CHAR (5) NOT NULL," +
                             "endTime CHAR (5) NOT NULL," +
                             "price FLOAT NOT NULL," +
                             "PRIMARY KEY (plid)," +
                             "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))" ;
+                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
 
-            stmt.execute(addUserSchemaPl);
+            stmt.execute(addPl);
 
             // Populate a tuple for Plessons
             String insertPl =
@@ -255,7 +272,7 @@ public class CreateAndPopulateDBMain {
                             "(plid, sid, inid, loc, startTime, endTime, price) " +
                             "VALUES " +
                             "('p5000', 101, 901, '401, 8918 Marine DR.', '11:00', '13:00', 100.00)";
-            stmt.execute(insertPl);
+
 
             // Create Book table ===============================================================
             String addUserSchemaBook =
@@ -275,6 +292,43 @@ public class CreateAndPopulateDBMain {
                             "(sid, plid) " +
                             "VALUES " +
                             "(101, 'p5000')";
+
+
+            // Create Lesson table =============================================================
+            String addLesson =
+                    "CREATE TABLE Lesson(" +
+                            "lid CHAR (10) NOT NULL," +
+                            "inid INT NOT NULL," +
+                            "loc VARCHAR (200) NOT NULL," +
+                            "startTime CHAR (5) NOT NULL," +
+                            "endTime CHAR (5) NOT NULL," +
+                            "price FLOAT NOT NULL," +
+                            "PRIMARY KEY (lid)," +
+                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
+            stmt.execute(addLesson);
+
+            // Create Register table =============================================================
+            String addRegister =
+                    "CREATE TABLE Register(" +
+                            "lid CHAR (10) NOT NULL," +
+                            "sid INT NOT NULL," +
+                            "FOREIGN KEY (sid) REFERENCES Students (sid)," +
+                            "FOREIGN KEY (lid) REFERENCES Lesson (lid))";
+
+
+            stmt.execute(addRegister);
+
+            // Execute all insertion statements here, they are ordered in parent -> child way
+            // Keep the order of the executes to this
+            // insertuser, insertuseraddnull,
+            stmt.execute(insertUser);
+            stmt.execute(insertUserAddNull);
+            stmt.execute(insertUserPhoNull);
+            stmt.execute(insertUserHasBio);
+            stmt.execute(insertInstructors);
+            stmt.execute(insertStudents);
+            stmt.execute(insertRequests);
+            stmt.execute(insertPl);
             stmt.execute(insertBook);
 
 
@@ -298,4 +352,4 @@ public class CreateAndPopulateDBMain {
             e.printStackTrace();
         }
     }
-    
+}
