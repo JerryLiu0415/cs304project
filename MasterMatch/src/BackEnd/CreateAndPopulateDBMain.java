@@ -328,7 +328,7 @@ public class CreateAndPopulateDBMain {
                             "(lid, inid, price, loc, startTime, endTime, date, capacity) " +
                             "VALUES " +
                             "('L700', 908, 50.00, '401, 8918 Marine DR.', '11:00', '12:00','Marh22-2017', 10 ),"+
-                            "('L701', 902, 75.00,'401, 8918 Marine DR.', '11:00', '13:00', 'Mar13-2017', 10)," +
+                            "('L701', 901, 75.00,'401, 8918 Marine DR.', '11:00', '13:00', 'Mar13-2017', 10)," +
                             "('L702', 903, 30.00, '401, 8918 Marine DR.', '08:00', '13:00','April10-2017', 20)," +
                             "('L703', 902, 30.00, '401, 8918 Marine DR.', '11:00', '16:00', 'Mar25-2017', 20)," +
                             "('L704', 905, 50.00, '401, 8918 Marine DR.', '09:00', '12:00', 'April01-2017', 15)," +
@@ -339,16 +339,34 @@ public class CreateAndPopulateDBMain {
                             "('L709', 904, 40.00, '401, 8918 Marine DR.', '13:00', '14:00', 'Oct10-2017', 15)," +
                             "('L710', 902, 30.00, '401, 8918 Marine DR.', '11:00', '13:00', 'Sep23-2017', 10)," +
                             "('L711', 907, 25.00,  '401, 8918 Marine DR.', '09:00', '09:30', 'Nov02-2017', 15)," +
-                            "('L712', 908, 25.00,  '401, 8918 Marine DR.', '16:00', '16:30', 'Nov02-2017', 10)";
+                            "('L712', 909, 25.00,  '401, 8918 Marine DR.', '16:00', '16:30', 'Nov02-2017', 10)";
 
 
             // Create Register table =============================================================
             String addRegister =
                     "CREATE TABLE Register(" +
-                            "lid CHAR (10) NOT NULL," +
                             "sid INT NOT NULL,"+
+                            "lid CHAR (10) NOT NULL," +
+                            "PRIMARY KEY (sid, lid)," +
                             "FOREIGN KEY (sid) REFERENCES Students (sid)," +
                             "FOREIGN KEY (lid) REFERENCES Lesson (lid))";
+            String insertRegister=
+                    "INSERT INTO Register" +
+                            "(sid, lid)" +
+                            "VALUES" +
+                            "(104, 901)," +
+                            "(105, 902)," +
+                            "(106, 902)," +
+                            "(107, 902)," +
+                            "(110, 902)," +
+                            "(114, 903)," +
+                            "(119, 904)," +
+                            "(133, 907)," +
+                            "(130, 906)," +
+                            "(135, 908)," +
+                            "(126, 905)," +
+                            "(121, 905)" ;
+
 
 
 
