@@ -227,10 +227,9 @@ public class CreateAndPopulateDBMain {
             // The request table ===============================================================
             String addRequest =
                     "CREATE TABLE Request(" +
-                            "inid INT, " +
                             "sid INT, " +
-                            "pref CHAR (10)," +
-                            "PRIMARY KEY (inid), " +
+                            "inid INT, " +
+                            "PRIMARY KEY (sid)," +
                             "FOREIGN KEY (sid) REFERENCES Students(sid), " +
                             "FOREIGN KEY (inid) REFERENCES Instructors(inid))";
 
@@ -238,9 +237,20 @@ public class CreateAndPopulateDBMain {
             // Populate tuples for request
             String insertRequests =
                     "INSERT INTO Request " +
-                            "(inid , sid, pref) " +
+                            "(sid, inid) " +
                             "VALUES " +
-                            "(901, 101, 'BecomeStu')";
+                            "(101, 901)," +
+                            "(102, 902)," +
+                            "(103, 903)," +
+                            "(140, 904)," +
+                            "(139, 905)," +
+                            "(138, 902)," +
+                            "(129, 908)," +
+                            "(128, 907)," +
+                            "(127, 907)," +
+                            "(124, 902)," +
+                            "(125, 901)," +
+                            "(120, 902)" ;
 
 
             // Create  table Plessons ===============================================================
