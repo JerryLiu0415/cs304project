@@ -202,14 +202,14 @@ public class CreateAndPopulateDBMain {
                             "(year , type, headline, inid) " +
                             "VALUES " +
                             "(7, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
-                            "(10, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 902)," +
-                            "(8, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 903)," +
-                            "(5, 'Kungfu','Upcoming group Kungfu lesson of 20 in Oakridge Center', 904)," +
-                            "(2, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 905)," +
-                            "(4, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 906)," +
-                            "(5, 'Karate', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 907)," +
-                            "(6, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 908)," +
-                            "(4, 'Taekwondo', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 909)";
+                            "(10, 'Kungfu', 'Kung Fu Lessons Every Friday at the UBC NEST', 902)," +
+                            "(8, 'Kungfu','Training 3 times a week for 2 hours at Dunbar Community Center', 903)," +
+                            "(5, 'Kungfu','Lessons for those new to the art once a week at the UBC dojo', 904)," +
+                            "(2, 'Kungfu', 'For fun and more casual lessons at the beach', 905)," +
+                            "(4, 'Karate', 'Training  for 2 days a week at the Fraser Dojo', 906)," +
+                            "(5, 'Karate', 'Lessons held at the downtown dojo 3 times a week', 907)," +
+                            "(6, 'Taekwondo', 'Training Center open for lessons near kingsway for up to 100 students', 908)," +
+                            "(4, 'Taekwondo', 'Sparring facilities located in Korea Town in Burnaby', 909)";
 
 
             // The martialArtsType table ===============================================================
@@ -217,7 +217,7 @@ public class CreateAndPopulateDBMain {
                     "CREATE TABLE MartialArtsType(" +
                             "style CHAR (10), " +
                             "typeName CHAR (20)," +
-                            "forms CHAR (10)," +
+                            "forms CHAR (250)," +
                             "PRIMARY KEY (style))";
             stmt.execute(addMartialArtsType);
 
@@ -225,7 +225,26 @@ public class CreateAndPopulateDBMain {
             String insertMartialArtsType =
                     "INSERT INTO MartialArtsType " +
                             "VALUES" +
-                            "('Wushu','Kung Fu','40')";
+                            "('Wushu','Kung Fu','Long Fist, Southern Fist, Wushu Staff, Wushu Sword, Wushu Straight Sword, Wushu Spear, Chain Whip')," +
+                            "('Hun Gar','Kung Fu','Plum Blossom Fist, LGK, Staff form, Praying Mantis, Plum Blossom Broad Sword, CL Straight Sword, Spear, Tiger Crane')," +
+                            "('Wing Chun','Kung Fu','Siu Lim Tao, Chum Kiu, Biu Gee, Dummy Form, Pole Form, Knife Form')," +
+                            "('Choy Lei Fut','Kung Fu','Five Wheel Stance and Fist Form, Jiangmen Small Tiger-Blocking Hand Form, Junior Bin-Gwai Staff, Throat Locking Spear')," +
+                            "('Shaolin','Kung Fu','Pao Chui, Dragon Boxing, Fire Staff, Five Tigers Kill Sheep Staff, Dragon Spring Sword, Swallow Saber, Meteor Hammer')," +
+                            "('Bagua','Kung Fu','Single palm change Double palm change','Smooth body palm','Back body palm')" +
+                            "('Northen Shaolin','Kung Fu','Tan Teui ,Lian Bu,Xiao Yuen ,Enter The Gate ,Leading Steps ,Riding Horse ,Connecting Links ,The Method')" +
+                            "('Jeet Kun Do','Kung Fu','The Five Gates, Un Moon')," +
+                            "('Shotokan-Ryu','Karate','Fukyu, Pinan, Naihanchi, passai, kanku, seisan')," +
+                            "('Shito-Ryu','Karate','Pinan, Bassai Dai, Seienchin, Saifa, Rōhai, Nipaipo')," +
+                            "('Goju-ryu','Karate','Sanchin, Tensho, Gekisai Dai, Seipai, Saifa')," +
+                            "('Wado-ryu','Karate','Pinan, Kushanku, Seishan, Chintō, Naihanchi, Jion, Wanshu, Jitte and Niseishi')," +
+                            "('Shorin-ryu','Karate','Fukyu, Pinan, Naihanchi, passai, kanku, seisan')," +
+                            "('Uechi-ryu','Karate','Sanchin, Seisan, Sanseirui')," +
+                            "('Shuri-ryu','Karate','Wunsu, O-Naihanchi, Sanchin')," +
+                            "('Kyokushinkai','Karate','Taikyoku, Pinan, Kanku, Sanchin, Tensho, Garyu')," +
+                            "('Yoshukai','Karate','Seisan, Bassai, Yoshu, San Shi Ryu')," +
+                            "('Chito-ryu','Karate','Shi Ho Hai, Seisan, Ro Hai Sho, Niseishi, Bassai, Chinto, Sochin, Tenshin, Ro Hai Dai, Sanshiryu, Ryushan, Kusanku, Sanchin')," +
+                            "('WTF','Taekwondo','WTF Taekwondo Form 1,WTF Taekwondo Form 2,WTF Taekwondo Form 3,WTF Taekwondo Form 4,WTF Taekwondo Form 5,WTF Taekwondo Form 6,WTF Taekwondo Form 7,WTF Taekwondo Form 8')," +
+                            "('ITF','Taekwando','Chon-Ji,Dan-Gun, Do-San, Won-Hyo, Yul-Gok,Joong-Gun, Toi-Gye, Hwa-Rang')";
 
             // The request table ===============================================================
             String addRequest =
@@ -309,7 +328,18 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Book " +
                             "(sid, plid) " +
                             "VALUES " +
-                            "(101, 'p5000')";
+                            "(101, 'p5000')," +
+                            "(104, 'p5002')," +
+                            "(104, 'p5003')," +
+                            "(105, 'p5004')," +
+                            "(101, 'p5005')," +
+                            "(101, 'p5006')," +
+                            "(101, 'p5007')," +
+                            "(101, 'p5008')," +
+                            "(101, 'p5009')," +
+                            "(101, 'p5100')," +
+                            "(101, 'p5110')," +
+                            "(101, 'p5120')" ;
 
 
             // Create Lesson table =============================================================
