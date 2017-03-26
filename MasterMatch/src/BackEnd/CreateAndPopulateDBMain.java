@@ -142,12 +142,11 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Students " +
                             "(achievements, headline, sid, inid) " +
                             "VALUES " +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101, 901)," +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 102, 901)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 101, NULL)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 102, NULL)," +
                             "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 104, 901)," +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 103, 901)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 103, NULL)," +
                             "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 105, 902)," +
-                            "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 105, 902)," +
                             "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 106, 902)," +
                             "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 107, 902)," +
                             "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 108, 902)," +
@@ -162,16 +161,16 @@ public class CreateAndPopulateDBMain {
                             "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 117, 903)," +
                             "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 118, 903)," +
                             "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 119, 904)," +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 120, 904)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 120, NULL)," +
                             "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 121, 905)," +
                             "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 122, 905)," +
                             "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 123, 905)," +
-                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 124, 905)," +
-                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 125, 905)," +
+                            "('Shito-ryu Karate Purple Belt','Very Experienced Karate practitioner looking for sensei to complete my belts in the shawnessy catchman', 124, NULL)," +
+                            "('Choy Lei Fut Kung Fu Junior level sash','Previously trained in a school for choi lei fut and wish to continue in the Richmond district', 125, NULL)," +
                             "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 126, 905)," +
-                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 127, 905)," +
-                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 128, 906)," +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 129, 906)," +
+                            "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 127, NULL)," +
+                            "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 128, NULL)," +
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 129, NULL)," +
                             "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 130, 906)," +
                             "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 131, 906)," +
                             "('WTF TaeKwondo Green Belt With Blue Stripe','Looking to further my career in TaeKwonDo in West Point Grey Area', 132, 907 )," +
@@ -180,9 +179,9 @@ public class CreateAndPopulateDBMain {
                             "('Wushu Kung Fu 2 years experience','Looking for instructor in Wushu in the Richmond Area', 135, 908)," +
                             "('ITF TaeKwondo yellow belt', 'Looking for Taekwondo instructor in Marpole area', 136, 908)," +
                             "('Wing Chun Kung Fu Sash', 'Looking for experienced Wing Chun Teacher near Kitsilano', 137, 908)," +
-                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 138, 909)," +
-                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 139, 909)," +
-                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 140, 909)";
+                            "('Shotokan-ryu Karate White Belt', 'Searching for easy going instructor of Shotokun in Burnaby', 138, NULL)," +
+                            "('Wushu Kung Fu No Experience', 'Wondering if there are any good teachers at UBC for Wushu, wish to learn how to butterfly', 139, NULL)," +
+                            "('Hun Gar Kung Fu Senoir Sash Student', 'I have trained in the hun gar style of kung fu and wish to further my skills. Looking for instructor with 20+ years of experience.', 140, NULL)";
 
             // Create instructor table ===============================================================
             String addUserSchemaInst =
@@ -228,15 +227,12 @@ public class CreateAndPopulateDBMain {
                             "VALUES" +
                             "('Wushu','Kung Fu','40')";
 
-            stmt.execute(insertStudents);
-
             // The request table ===============================================================
             String addRequest =
                     "CREATE TABLE Request(" +
-                            "inid INT, " +
                             "sid INT, " +
-                            "pref CHAR (10)," +
-                            "PRIMARY KEY (inid), " +
+                            "inid INT, " +
+                            "PRIMARY KEY (sid)," +
                             "FOREIGN KEY (sid) REFERENCES Students(sid), " +
                             "FOREIGN KEY (inid) REFERENCES Instructors(inid))";
 
@@ -245,9 +241,20 @@ public class CreateAndPopulateDBMain {
             // Populate tuples for request
             String insertRequests =
                     "INSERT INTO Request " +
-                            "(inid , sid, pref) " +
+                            "(sid, inid) " +
                             "VALUES " +
-                            "(901, 101, 'BecomeStu')";
+                            "(101, 901)," +
+                            "(102, 902)," +
+                            "(103, 903)," +
+                            "(140, 904)," +
+                            "(139, 905)," +
+                            "(138, 902)," +
+                            "(129, 908)," +
+                            "(128, 907)," +
+                            "(127, 907)," +
+                            "(124, 902)," +
+                            "(125, 901)," +
+                            "(120, 902)" ;
 
 
             // Create  table Plessons ===============================================================
@@ -255,23 +262,34 @@ public class CreateAndPopulateDBMain {
                     "CREATE TABLE Plessons(" +
                             "plid CHAR (10) NOT NULL," +
                             "sid INT NOT NULL," +
-                            "inid INT NOT NULL," +
+                            "price FLOAT NOT NULL," +
                             "loc VARCHAR (200) NOT NULL," +
                             "startTime CHAR (5) NOT NULL," +
                             "endTime CHAR (5) NOT NULL," +
-                            "price FLOAT NOT NULL," +
+                            "date CHAR(20) NOT NULL," +
                             "PRIMARY KEY (plid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
+                            "FOREIGN KEY (sid) REFERENCES Students (sid))" ;
 
             stmt.execute(addPl);
 
             // Populate a tuple for Plessons
             String insertPl =
                     "INSERT INTO Plessons " +
-                            "(plid, sid, inid, loc, startTime, endTime, price) " +
+                            "(plid, sid, price, loc, startTime, endTime, date) " +
                             "VALUES " +
-                            "('p5000', 101, 901, '401, 8918 Marine DR.', '11:00', '13:00', 100.00)";
+                            "('p5000', 101, 100.00,'401, 8918 Marine DR.', '11:00', '13:00', 'Mar12-2017')," +
+                            "('p5001', 104, 100.00, '401, 8918 Marine DR.', '11:00', '13:00', 'Mar14-2017')," +
+                            "('p5002', 104, 200.00, '401, 8918 Marine DR.', '08:00', '13:00','April12-2017')," +
+                            "('p5003', 105, 300.00, '401, 8918 Marine DR.', '11:00', '16:00', 'Mar22-2017')," +
+                            "('p5004', 106, 100.00, '401, 8918 Marine DR.', '09:00', '12:00', 'April02-2017')," +
+                            "('p5005', 107, 100.00, '401, 8918 Marine DR.', '11:00', '13:00', 'May17-2017')," +
+                            "('p5006', 110, 50.00,  '401, 8918 Marine DR.',  '11:00', '12:00', 'May08-2017')," +
+                            "('p5007', 119, 50.00,  '401, 8918 Marine DR.', '14:00', '14:30', 'April25-2017')," +
+                            "('p5008', 119, 100.00, '401, 8918 Marine DR.', '13:00', '15:00', 'Sep27-2017')," +
+                            "('p5009', 123, 100.00, '401, 8918 Marine DR.', '13:00', '14:00', 'Oct12-2017')," +
+                            "('p5100', 126, 100.00, '401, 8918 Marine DR.', '11:00', '13:00', 'Sep22-2017')," +
+                            "('p5110', 130, 25.00,  '401, 8918 Marine DR.', '09:00', '09:30', 'Nov04-2017')," +
+                            "('p5120', 130, 25.00,  '401, 8918 Marine DR.', '16:00', '16:30', 'Dec23-2017')";
 
 
             // Create Book table ===============================================================
@@ -302,18 +320,58 @@ public class CreateAndPopulateDBMain {
                             "loc VARCHAR (200) NOT NULL," +
                             "startTime CHAR (5) NOT NULL," +
                             "endTime CHAR (5) NOT NULL," +
+                            "date CHAR(20) NOT NULL," +
                             "price FLOAT NOT NULL," +
+                            "capacity INT NOT NULL," +
                             "PRIMARY KEY (lid)," +
                             "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
             stmt.execute(addLesson);
 
+            // Populate a tuple for lesson
+            String insertLesson =
+                    "INSERT INTO Lesson " +
+                            "(lid, inid, price, loc, startTime, endTime, date, capacity) " +
+                            "VALUES " +
+                            "('L700', 908, 50.00, '401, 8918 Marine DR.', '11:00', '12:00','Marh22-2017', 10 ),"+
+                            "('L701', 901, 75.00,'401, 8918 Marine DR.', '11:00', '13:00', 'Mar13-2017', 10)," +
+                            "('L702', 903, 30.00, '401, 8918 Marine DR.', '08:00', '13:00','April10-2017', 20)," +
+                            "('L703', 902, 30.00, '401, 8918 Marine DR.', '11:00', '16:00', 'Mar25-2017', 20)," +
+                            "('L704', 905, 50.00, '401, 8918 Marine DR.', '09:00', '12:00', 'April01-2017', 15)," +
+                            "('L705', 907, 75.00, '401, 8918 Marine DR.', '11:00', '13:00', 'May19-2017', 10)," +
+                            "('L706', 908, 50.00,  '401, 8918 Marine DR.',  '11:00', '12:00', 'May05-2017', 10)," +
+                            "('L707', 908, 50.00,  '401, 8918 Marine DR.', '14:00', '14:30', 'April29-2017', 20)," +
+                            "('L708', 906, 30.00, '401, 8918 Marine DR.', '13:00', '15:00', 'Sep17-2017', 25)," +
+                            "('L709', 904, 40.00, '401, 8918 Marine DR.', '13:00', '14:00', 'Oct10-2017', 15)," +
+                            "('L710', 902, 30.00, '401, 8918 Marine DR.', '11:00', '13:00', 'Sep23-2017', 10)," +
+                            "('L711', 907, 25.00,  '401, 8918 Marine DR.', '09:00', '09:30', 'Nov02-2017', 15)," +
+                            "('L712', 909, 25.00,  '401, 8918 Marine DR.', '16:00', '16:30', 'Nov02-2017', 10)";
+
+
             // Create Register table =============================================================
             String addRegister =
                     "CREATE TABLE Register(" +
+                            "sid INT NOT NULL,"+
                             "lid CHAR (10) NOT NULL," +
-                            "sid INT NOT NULL," +
+                            "PRIMARY KEY (sid, lid)," +
                             "FOREIGN KEY (sid) REFERENCES Students (sid)," +
                             "FOREIGN KEY (lid) REFERENCES Lesson (lid))";
+            String insertRegister=
+                    "INSERT INTO Register" +
+                            "(sid, lid)" +
+                            "VALUES" +
+                            "(104, 901)," +
+                            "(105, 902)," +
+                            "(106, 902)," +
+                            "(107, 902)," +
+                            "(110, 902)," +
+                            "(114, 903)," +
+                            "(119, 904)," +
+                            "(133, 907)," +
+                            "(130, 906)," +
+                            "(135, 908)," +
+                            "(126, 905)," +
+                            "(121, 905)" ;
+
 
 
             stmt.execute(addRegister);
@@ -330,6 +388,7 @@ public class CreateAndPopulateDBMain {
             stmt.execute(insertRequests);
             stmt.execute(insertPl);
             stmt.execute(insertBook);
+            stmt.execute(insertLesson);
 
 
         } catch (SQLException e) {
