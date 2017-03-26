@@ -215,9 +215,9 @@ public class CreateAndPopulateDBMain {
             // The martialArtsType table ===============================================================
             String addMartialArtsType =
                     "CREATE TABLE MartialArtsType(" +
-                            "style CHAR (10), " +
-                            "typeName CHAR (20)," +
-                            "forms CHAR (250)," +
+                            "style CHAR (20), " +
+                            "typeName CHAR (10)," +
+                            "forms CHAR (255)," +
                             "PRIMARY KEY (style))";
             stmt.execute(addMartialArtsType);
 
@@ -226,12 +226,12 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO MartialArtsType " +
                             "VALUES" +
                             "('Wushu','Kung Fu','Long Fist, Southern Fist, Wushu Staff, Wushu Sword, Wushu Straight Sword, Wushu Spear, Chain Whip')," +
-                            "('Hun Gar','Kung Fu','Plum Blossom Fist, LGK, Staff form, Praying Mantis, Plum Blossom Broad Sword, CL Straight Sword, Spear, Tiger Crane')," +
+                            "('Hun Gar','Kung Fu','Plum Blossom Fist, LGK, Staff, Praying Mantis, Plum Blossom Broad Sword, CL Straight Sword, Spear, Tiger Crane')," +
                             "('Wing Chun','Kung Fu','Siu Lim Tao, Chum Kiu, Biu Gee, Dummy Form, Pole Form, Knife Form')," +
-                            "('Choy Lei Fut','Kung Fu','Five Wheel Stance and Fist Form, Jiangmen Small Tiger-Blocking Hand Form, Junior Bin-Gwai Staff, Throat Locking Spear')," +
+                            "('Choy Lei Fut','Kung Fu','Five Wheel Stance, Jiangmen Small Tiger-Blocking Hand Form, Junior Bin-Gwai Staff, Throat Locking Spear')," +
                             "('Shaolin','Kung Fu','Pao Chui, Dragon Boxing, Fire Staff, Five Tigers Kill Sheep Staff, Dragon Spring Sword, Swallow Saber, Meteor Hammer')," +
-                            "('Bagua','Kung Fu','Single palm change Double palm change','Smooth body palm','Back body palm')" +
-                            "('Northen Shaolin','Kung Fu','Tan Teui ,Lian Bu,Xiao Yuen ,Enter The Gate ,Leading Steps ,Riding Horse ,Connecting Links ,The Method')" +
+                            "('Bagua','Kung Fu','Single palm change Double palm change,Smooth body palm ,Back body palm')," +
+                            "('Northen Shaolin','Kung Fu','Tan Teui ,Lian Bu,Xiao Yuen ,Enter The Gate ,Leading Steps ,Riding Horse ,Connecting Links ,The Method')," +
                             "('Jeet Kun Do','Kung Fu','The Five Gates, Un Moon')," +
                             "('Shotokan-Ryu','Karate','Fukyu, Pinan, Naihanchi, passai, kanku, seisan')," +
                             "('Shito-Ryu','Karate','Pinan, Bassai Dai, Seienchin, Saifa, Rōhai, Nipaipo')," +
@@ -243,7 +243,7 @@ public class CreateAndPopulateDBMain {
                             "('Kyokushinkai','Karate','Taikyoku, Pinan, Kanku, Sanchin, Tensho, Garyu')," +
                             "('Yoshukai','Karate','Seisan, Bassai, Yoshu, San Shi Ryu')," +
                             "('Chito-ryu','Karate','Shi Ho Hai, Seisan, Ro Hai Sho, Niseishi, Bassai, Chinto, Sochin, Tenshin, Ro Hai Dai, Sanshiryu, Ryushan, Kusanku, Sanchin')," +
-                            "('WTF','Taekwondo','WTF Taekwondo Form 1,WTF Taekwondo Form 2,WTF Taekwondo Form 3,WTF Taekwondo Form 4,WTF Taekwondo Form 5,WTF Taekwondo Form 6,WTF Taekwondo Form 7,WTF Taekwondo Form 8')," +
+                            "('WTF','Taekwondo','WTF Form 1,WTF Form 2,WTF Form 3,WTF Form 4,WTF Form 5,WTF Form 6,WTF Form 7,WTF Form 8')," +
                             "('ITF','Taekwando','Chon-Ji,Dan-Gun, Do-San, Won-Hyo, Yul-Gok,Joong-Gun, Toi-Gye, Hwa-Rang')";
 
             // The request table ===============================================================
@@ -419,6 +419,7 @@ public class CreateAndPopulateDBMain {
             stmt.execute(insertPl);
             stmt.execute(insertBook);
             stmt.execute(insertLesson);
+            stmt.execute(insertMartialArtsType);
 
 
         } catch (SQLException e) {
