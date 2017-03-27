@@ -35,7 +35,6 @@
 
 -DONE
 
-
 #### 1b. Summarize all queries we need according to functionalities and demo marking checklist. (- March 21)
 * (1 point) Selection and projection query: pick one query of this category and provide an interface for the user to specify the selection condition and the attributes to be returned.
 
