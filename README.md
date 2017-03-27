@@ -24,14 +24,16 @@
 ## Plan
 #### 1a. Finish CreateAndPopulateDBMain.java by creating tables and inserting tuples. (- March 21)
 * Users (Created) + (Populated)
-* Register (Created)
-* Lesson (Created)
-* Book (Created)
-* Plessons (Created)
-* Request (Created)
-* Students (Created) + (Populated)
-* Instructors (Created)
-* MartialArtsType (Created)
+* Register (Created) C 
+* Lesson (Created) C
+* Book (Created) K
+* Plessons (Created) C
+* Request (Created) K
+* Students (Created) + (Populated) 
+* Instructors (Created) K
+* MartialArtsType (Created) K
+
+-DONE
 
 
 #### 1b. Summarize all queries we need according to functionalities and demo marking checklist. (- March 21)
@@ -54,16 +56,21 @@
 * (3 points) Extra features: Create unique features that your application supports. You can really be creative about this. Some examples are using Bootstrap to prettify your UI, implementing Triggers and Privileges in the database, using any cloud-based databases. See the marking scheme for more examples and the breakdown.
 
 ###### Queries we have so far
-* 1. Find user with user id "101" and password 55555555 (This query is sent whenever someone tries to log in).
-* 2. Find the student who registered in all lessons held by 'Kevin Ho' (Interested by instructor)
-* 3. Find details of student with id = 101 (Instructor may right click a row in the table to see the details)
-* 4. Find average teaching exp among instructors of age over 20.
-* 5. List all students (name,id) of age between 20 and 30.
-* 6. List all instructos (name , id) with more than 5 years of teaching experience.
-* 7. Find the name and id of students who've sent a request to instructor 'Kevin Ho'
-* 8. Find the average age of studeents for each lesson.
-* 9. Find the average age among the min age of each student grouped by lesson.
-* 10. Find all lessons held by 'Kevin Ho'
+* 1. Find user with user id "101" and password 55555555 (selection; This query is sent whenever someone tries to log in).
+* 2. Find the student who registered in all lessons held by 'Kevin Ho' (division; Interested by instructor)
+* 3. Find details of student with id = 101 (selection; Instructor may right click a row in the table to see the details)
+* 4. Find average teaching exp among instructors of age over 20. (aggregate)
+* 5. List all students (name,id,acheivements) of age between 20 and 30 (projection, selection).
+* 6. List all instructos (name , id) with more than 5 years of teaching experience (projection, selection).
+* 7. Find the name and id of students who've sent a request to instructor 'Kevin Ho'(projection, selection)
+* 8. Find the average age of students for each lesson (aggregate, nested?).
+* 9. Find the average age among the min age of each student grouped by lesson (nested).
+* 10. Find all lessons held by 'Kevin Ho' and 'XXX XXX'(union)
+* 11. Find the average number of registered students among all group lessons group by instructors (nested).
+* 12. Find the number of users whoes address is null (aggregation, use count).
+* 13. Find the names of students in the pending requests who live on Broadway (projection, selection, use '%LIKE%')
+* 14. Find the instructor who teaches all the students between age 40~50 (division)
+
 
 ###### Updates we have so far
 * 1. Change the password of user 101 to 1
@@ -71,10 +78,12 @@
 * 3. Add student to 'Kevin Ho', meanwhile remove him from the request table.
 * 4. Add student to some private lesson and remove him from the booking record.
 * 5. Remove student from a lesson, a relationship or a private lesson.
-* 6. Remove student from lesson held by 'Kevin Ho'
+* 6. Remove students from lesson held by 'Kevin Ho'
 * 7. Add a user. (The user are required to provide essential imformations.)
 * 8. Upate a user's isBlocked field to true. 
 * 9. Remove a lesson from instructor 'Kevin Ho'. (Lots of updates followed by this, for example all students register)
+* 10. Student fires his instructor -> instructor field becomes NULL -> student get removed from all the lessons
+* 11. If an instructor withdrew from the system (delete/block) -> all his lessons disappear + all his students lose their instructor
 
 
 
@@ -86,4 +95,3 @@
 #### 3. Refactor SQLs into functions such that the UI class can call them easily. (?)
 
 #### 4. Combine backend with UI. (March 21 - March 31)
-
