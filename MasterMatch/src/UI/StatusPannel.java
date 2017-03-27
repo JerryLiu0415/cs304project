@@ -9,7 +9,6 @@ import java.awt.*;
  * Created by Jerry on 2017-03-20.
  */
 public class StatusPannel extends JPanel {
-
     private JLabel label1;
 
     public StatusPannel() {
@@ -158,7 +157,7 @@ public class StatusPannel extends JPanel {
         topLeft.add(topLeftP1);
         topLeft.add(topLeftP2);
         topLeft.add(topLeftP3);
-        topLeft.add(new Label("df"));
+
 
         JPanel topRight = new JPanel();
         topRight.add(new Label("Name: XXX"));
@@ -171,13 +170,67 @@ public class StatusPannel extends JPanel {
 
 
         this.add(top);
+
+
         JPanel bot = new JPanel();
+        JPanel botL = new JPanel();
+        JPanel botM = new JPanel();
+        JPanel botR = new JPanel();
+
+        String dataGeneral[][] =
+                {
+                        {"aafv", "2", "b", "2", "c", "dafvafv"},
+                        {"aadfv", "1", "b", "2", "c", "adfv"},
+                        {"asfgb", "5", "b", "2", "c", "3adfbsgb"},
+                        {"adgh", "1", "b", "2", "c", "3sfgb"},
+                        {"awerg", "34", "b", "2", "c", "sfgb3"},
+                        {"awtbw", "1", "b", "2", "c", "sfgb"},
+                        {"artb", "23", "b", "2", "c", "fgb"},
+                        {"asfgb", "1", "b", "2", "c", "sbfgb"},
+                        {"awbs", "234", "b", "2", "c", "fgb"},
+                        {"agfb", "1", "b", "2", "c", "sfgb"},
+                        {"asfgb", "23", "b", "2", "c", "sfgb"},
+                        {"asfgb", "1", "b", "2", "c", "fbgsfgbsfgb"},
+                        {"axcb ", "1", "b", "2", "c", "sfgb"},
+                        {"asb", "3", "b", "2", "c", "sfgbsfgb3"},
+                        {"asfgb", "1", "b", "2", "c", "sbgsfgb3"},
+
+                };
+
+        String colGeneral[] = {"name", "id", "age", "email", "exp", "head"};
         bot.setBorder(BorderFactory.createTitledBorder("GeneralQueries"));
         bot.add(new Label("A large by dynamic table here, displaying all kinds of query results!"));
+        int[] sizes = {50,50,50,50,50,50};
+        JScrollPane generalPane = createJtable(dataGeneral, colGeneral, sizes);
+        generalPane.setPreferredSize(new Dimension(400,200));
+        generalPane.setBorder(BorderFactory.createTitledBorder("GeneralResult"));
+        generalPane.setBackground(Color.lightGray);
 
+        botL.add(generalPane);
+        bot.add(botL);
+        bot.add(botM);
+        bot.add(botR);
 
         this.add(bot);
 
     }
+
+    public JScrollPane createJtable(String[][] data, String[] col, int[] sizes) {
+        JTable t = new JTable(data, col);
+        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        t.setShowGrid(true);
+        t.setGridColor(Color.BLACK);
+        JTableHeader h = t.getTableHeader();
+        h.setBackground(Color.lightGray);
+        JScrollPane p = new JScrollPane(t);
+
+        TableColumn c = null;
+        for (int i = 0; i < col.length; i++) {
+            c = t.getColumnModel().getColumn(i);
+            c.setPreferredWidth(sizes[i]);
+        }
+        return p;
+    }
+
 
 }
