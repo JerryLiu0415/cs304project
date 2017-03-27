@@ -1,6 +1,7 @@
 package UI;
 
 import BackEnd.DataBaseConnection;
+import BackEnd.QueryAndUpdate;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,16 +13,17 @@ import java.awt.*;
 
 public class MainUI extends JFrame {
     private JPanel MainPanel;
-    private AccountPannel calendar;
+    private AccountPannel account;
     private StatusPannel status;
 
-    JPanel cards;
 
     private static DataBaseConnection dbconn = new DataBaseConnection();
+    private static QueryAndUpdate querySender;
     final static int extraWindowWidth = 100;
 
 
     public MainUI() {
+        querySender = new QueryAndUpdate(dbconn.conn);
         //Put the JComboBox in a JPanel to get a nicer look.
         JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -42,6 +44,7 @@ public class MainUI extends JFrame {
             String s = Integer.toString(i);
             card1.add(new JButton("Button " + s));
         }
+
         JPanel holder = new JPanel();
         holder.setLayout(new GridLayout());
         holder.add(new Button("GG"));
@@ -50,9 +53,9 @@ public class MainUI extends JFrame {
         card1.add(holder);
 
         status = new StatusPannel();
-        calendar = new AccountPannel();
+        account = new AccountPannel(querySender);
 
-        tabbedPane.addTab("Account", calendar);
+        tabbedPane.addTab("Account", account);
         tabbedPane.addTab("Status", status);
         tabbedPane.addTab("Calendar", card1);
 
@@ -62,10 +65,12 @@ public class MainUI extends JFrame {
 
     public static void main(String[] args) {
         dbconn.connect();
+        sharedVariables currentUser = sharedVariables.getInstance( );
+
         JFrame frame = new JFrame("MainUI");
         frame.setContentPane(new MainUI().MainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(800, 600));
+        frame.setSize(new Dimension(1200, 1000));
         frame.setTitle("MasterMatch");
         frame.setVisible(true);
     }
