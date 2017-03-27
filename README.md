@@ -55,7 +55,7 @@
 * (3 points) Extra features: Create unique features that your application supports. You can really be creative about this. Some examples are using Bootstrap to prettify your UI, implementing Triggers and Privileges in the database, using any cloud-based databases. See the marking scheme for more examples and the breakdown.
 
 ###### Queries we have so far
-* 1. Find user with user id "101" and password 55555555 (selection; This query is sent whenever someone tries to log in).
+* 1. Find user with user id "101" and password 55555555 (selection; This query is sent whenever someone tries to log in). - Done
 * 2. Find the student who registered in all lessons held by 'Kevin Ho' (division; Interested by instructor)
 * 3. Find details of student with id = 101 (selection; Instructor may right click a row in the table to see the details)
 * 4. Find average teaching exp among instructors of age over 20. (aggregate)
