@@ -187,29 +187,29 @@ public class CreateAndPopulateDBMain {
             String addUserSchemaInst =
                     "CREATE TABLE Instructors(" +
                             "year INT," +
-                            "type VARCHAR (12)," +
+                            "style CHAR (20)," +
                             "headline VARCHAR (400)," +
                             "inid INT NOT NULL," +
-                            "FOREIGN KEY (inid) REFERENCES Users(uid))";
+                            "FOREIGN KEY (inid) REFERENCES Users(uid)," +
+                            "FOREIGN KEY (style) REFERENCES MartialArtsType(style))";
             // an example of headline could be "Upcoming group lesson of 20 in ST building"
 
-            stmt.execute(addUserSchemaInst);
-            stmt.execute(addUserSchemaStu);
+
 
             // Populate a tuple for Instructors
             String insertInstructors =
                     "INSERT INTO Instructors " +
-                            "(year , type, headline, inid) " +
+                            "(year , style, headline, inid) " +
                             "VALUES " +
-                            "(7, 'Kungfu', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
-                            "(10, 'Kungfu', 'Kung Fu Lessons Every Friday at the UBC NEST', 902)," +
-                            "(8, 'Kungfu','Training 3 times a week for 2 hours at Dunbar Community Center', 903)," +
-                            "(5, 'Kungfu','Lessons for those new to the art once a week at the UBC dojo', 904)," +
-                            "(2, 'Kungfu', 'For fun and more casual lessons at the beach', 905)," +
-                            "(4, 'Karate', 'Training  for 2 days a week at the Fraser Dojo', 906)," +
-                            "(5, 'Karate', 'Lessons held at the downtown dojo 3 times a week', 907)," +
-                            "(6, 'Taekwondo', 'Training Center open for lessons near kingsway for up to 100 students', 908)," +
-                            "(4, 'Taekwondo', 'Sparring facilities located in Korea Town in Burnaby', 909)";
+                            "(7, 'Wing Chun', 'Upcoming group Kungfu lesson of 20 in Oakridge Center', 901)," +
+                            "(10, 'Wushu', 'Kung Fu Lessons Every Friday at the UBC NEST', 902)," +
+                            "(8, 'Shaolin','Training 3 times a week for 2 hours at Dunbar Community Center', 903)," +
+                            "(5, 'Jeet Kun Do','Lessons for those new to the art once a week at the UBC dojo', 904)," +
+                            "(2, 'Bagua', 'For fun and more casual lessons at the beach', 905)," +
+                            "(4, 'Shotokan-Ryu', 'Training  for 2 days a week at the Fraser Dojo', 906)," +
+                            "(5, 'Shuri-ryu', 'Lessons held at the downtown dojo 3 times a week', 907)," +
+                            "(6, 'WTF', 'Training Center open for lessons near kingsway for up to 100 students', 908)," +
+                            "(4, 'ITF', 'Sparring facilities located in Korea Town in Burnaby', 909)";
 
 
             // The martialArtsType table ===============================================================
@@ -219,7 +219,10 @@ public class CreateAndPopulateDBMain {
                             "typeName CHAR (10)," +
                             "forms CHAR (255)," +
                             "PRIMARY KEY (style))";
+
             stmt.execute(addMartialArtsType);
+            stmt.execute(addUserSchemaInst);
+            stmt.execute(addUserSchemaStu);
 
             // Insert Martial Arts Types
             String insertMartialArtsType =
@@ -413,13 +416,15 @@ public class CreateAndPopulateDBMain {
             stmt.execute(insertUserAddNull);
             stmt.execute(insertUserPhoNull);
             stmt.execute(insertUserHasBio);
+            stmt.execute(insertMartialArtsType);
             stmt.execute(insertInstructors);
             stmt.execute(insertStudents);
             stmt.execute(insertRequests);
             stmt.execute(insertPl);
             stmt.execute(insertBook);
             stmt.execute(insertLesson);
-            stmt.execute(insertMartialArtsType);
+
+
 
 
         } catch (SQLException e) {
