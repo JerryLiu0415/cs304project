@@ -46,20 +46,26 @@
 * (2 points) Graphical user interface: Create an easy to use GUI that allows the users to execute all the above operations and transactions. Use the menu facility provided by the graphics environment you use to define appropriate menus and submenus. Make sure to design your interface in such a way that all the error messages appear in separate pop-up boxes, or in a designated area of the main window, so that they do not interfere with the other activities. Whenever user input is requested, make sure that there is sufficient type checking.
 * (3 points) Extra features: Create unique features that your application supports. You can really be creative about this. Some examples are using Bootstrap to prettify your UI, implementing Triggers and Privileges in the database, using any cloud-based databases. See the marking scheme for more examples and the breakdown.
 ###### Queries we have so far
-* 1. Find user with user id "101" and password 55555555 (selection; This query is sent whenever someone tries to log in). - Done
-* 2. Find the student who registered in all lessons held by 'Kevin Ho' (division; Interested by instructor)
-* 3. Find details of student with id = 101 (selection; Instructor may right click a row in the table to see the details)
-* 4. Find average teaching exp among instructors of age over 20. (aggregate)
-* 5. List all students (name,id,acheivements) of age between 20 and 30 (projection, selection).
-* 6. List all instructos (name , id) with more than 5 years of teaching experience (projection, selection).
-* 7. Find the name and id of students who've sent a request to instructor 'Kevin Ho'(projection, selection)
-* 8. Find the average age of students for each lesson (aggregate, nested?).
-* 9. Find the average age among the min age of each student grouped by lesson (nested).
-* 10. Find all lessons held by 'Kevin Ho' and 'XXX XXX'(union)
-* 11. Find the average number of registered students among all group lessons group by instructors (nested).
-* 12. Find the number of users whoes address is null (aggregation, use count).
-* 13. Find the names of students in the pending requests who live on Broadway (projection, selection, use '%LIKE%')
-* 14. Find the instructor who teaches all the students between age 40~50 (division)
+
+// Update: projection and selections
+* 1. Find user with user id "101" and password 55555555 (selection; This query is sent whenever someone tries to log in). 
+* 2. Find the name and id and achievements of students who've sent a request to instructor 'Kevin Ho'(projection, selection).
+
+// Update: join
+3. Find the name and year of instructors who teach a private lesson (join user, instructor and book)
+
+// Update: Sample regular aggregation queries to cover all 4 cases
+* 4. Find the min age of students. -> min  //(aggregation without filter)
+* 5. Find the number of userss whose address is null. -> count
+* 6. Find average year teaching among instructors of age over 20. -> average
+* 7. Find the max age of instructor who teaches Kungfu. -> max
+
+// Update: Sample nested aggregation queries: to cover all 4 cases
+* 8. Find the maximum among the min age of students in each group lesson (grouped by lesson) (nested). 
+* 9. Find the average number of group lessons participated by each instructor (group by instructors) (nested). 
+
+// Update: division
+* 10. Find the names of students who are taking all the classes of an instructor (division)
 
 
 ###### Updates we have so far
