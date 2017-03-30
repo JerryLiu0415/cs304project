@@ -1,12 +1,11 @@
 #ignore these files#
 ####################
 ./MasterMatch/.idea/
-./MasterMatch/.out/
+./MasterMatch/out/
 
 # Compiled source #
 ###################
 *.com
-*.class
 *.dll
 *.exe
 *.o
