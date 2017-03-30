@@ -2,6 +2,7 @@ package UI;
 
 import BackEnd.QueryAndUpdate;
 import UI.SubViews.AdvancedFilter;
+import UI.SubViews.lessonAddPopUp;
 import UI.SubViews.lessonTimePopUp;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 /**
  * Created by Jerry on 2017-03-20.
@@ -25,6 +27,13 @@ public class StatusPannel extends JPanel {
     JTable requestTable;
     JTable generalTable;
     JTable aggregationTable;
+    Label x1 = new Label("Name: None");
+    Label x2 = new Label("Id: ");
+    JTextField x3 = new JTextField("Email: None");
+    JTextField x4 = new JTextField("Age: None");
+    JTextField x5 = new JTextField("Address: None");
+    JTextField x6 = new JTextField("Gender: None");
+
 
     public StatusPannel(final QueryAndUpdate querySender) {
         this.querySender = querySender;
@@ -109,7 +118,7 @@ public class StatusPannel extends JPanel {
         topLeftP1.add(pane);
         JPanel topLeftP1S = new JPanel();
         topLeftP1S.setLayout(new BoxLayout(topLeftP1S, BoxLayout.Y_AXIS));
-        JButton TLP1B1 = new JButton("Dtl");
+        JButton TLP1B1 = new JButton("Info");
         TLP1B1.setPreferredSize(new Dimension(30,20));
         TLP1B1.addActionListener(new ActionListener()
         {
@@ -162,7 +171,7 @@ public class StatusPannel extends JPanel {
 
             }
         });
-        JButton TLP1B2 = new JButton("Rmv");
+        JButton TLP1B2 = new JButton("Del");
         TLP1B2.setPreferredSize(new Dimension(30,20));
         TLP1B2.addActionListener(new ActionListener()
         {
@@ -189,7 +198,7 @@ public class StatusPannel extends JPanel {
         topLeftP2.add(pane2);
         JPanel topLeftP2S = new JPanel();
         topLeftP2S.setLayout(new BoxLayout(topLeftP2S, BoxLayout.Y_AXIS));
-        JButton TLP2B1 = new JButton("Dtl");
+        JButton TLP2B1 = new JButton("Info");
         TLP2B1.setPreferredSize(new Dimension(30,20));
         TLP2B1.addActionListener(new ActionListener()
         {
@@ -230,7 +239,7 @@ public class StatusPannel extends JPanel {
 
             }
         });
-        JButton TLP2B2 = new JButton("Rmv");
+        JButton TLP2B2 = new JButton("Del");
         TLP2B2.setPreferredSize(new Dimension(30,20));
         TLP2B2.addActionListener(new ActionListener()
         {
@@ -255,7 +264,21 @@ public class StatusPannel extends JPanel {
             {
                 lessonTimePopUp frame = new lessonTimePopUp(lessonTable, querySender, lessonTable.getSelectedRow());
                 frame.setSize(new Dimension(800, 200));
-                frame.setTitle("Advanced");
+                frame.setTitle("Update a lesson");
+                frame.setVisible(true);
+                refresh();
+            }
+        });
+
+        JButton TLP2B4 = new JButton("Add");
+        TLP2B4.setPreferredSize(new Dimension(30,20));
+        TLP2B4.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                lessonAddPopUp frame = new lessonAddPopUp(lessonTable, querySender, lessonTable.getSelectedRow());
+                frame.setSize(new Dimension(800, 200));
+                frame.setTitle("Add a lesson");
                 frame.setVisible(true);
                 refresh();
             }
@@ -267,6 +290,8 @@ public class StatusPannel extends JPanel {
         topLeftP2S.add(TLP2B2);
         topLeftP2S.add(Box.createRigidArea(new Dimension(10, 10)));
         topLeftP2S.add(TLP2B3);
+        topLeftP2S.add(Box.createRigidArea(new Dimension(10, 10)));
+        topLeftP2S.add(TLP2B4);
         topLeftP2S.add(Box.createRigidArea(new Dimension(10, 10)));
         topLeftP2.add(topLeftP2S);
 
@@ -346,18 +371,19 @@ public class StatusPannel extends JPanel {
 
         JPanel topRight = new JPanel();
         topRight.setLayout(new GridLayout(4,4));
-        topRight.add(new JTextField("Name:"));
-        topRight.add(new JTextField("Id: XXX"));
-        topRight.add(new JTextField("Email: XXX"));
-        topRight.add(new JTextField("Number Students: XXXX"));
-        topRight.add(new JTextField("Name: XXX"));
-        topRight.add(new JTextField("Id: XXX"));
-        topRight.add(new JTextField("Email: XXX"));
-        topRight.add(new JTextField("Number Students: XXXX"));
-        topRight.add(new JTextField("Name: XXX"));
-        topRight.add(new JTextField("Id: XXX"));
-        topRight.add(new JTextField("Email: XXX"));
-        topRight.add(new JTextField("Number Students: XXXX"));
+
+        x1 = new Label("Name: "+ sharedVariables.getInstance().getCurrentName());
+        topRight.add(x1);
+        x2 = new Label("Id: " + sharedVariables.getInstance().getUid());
+        topRight.add(x2);
+        x3 = new JTextField("Email: " + sharedVariables.getInstance().getEmail());
+        topRight.add(x3);
+        x4 = new JTextField("Age: " + sharedVariables.getInstance().getAge());
+        topRight.add(x4);
+        x5 = new JTextField("Address: " + sharedVariables.getInstance().getAddress());
+        topRight.add(x5);
+        x6 = new JTextField("Gender: " + sharedVariables.getInstance().getGender());
+        topRight.add(x6);
         topRight.setBorder(BorderFactory.createTitledBorder("Personal Info"));
         top.add(topLeft);
         top.add(topRight);
@@ -396,13 +422,11 @@ public class StatusPannel extends JPanel {
         botL.add(generalPane);
 
         JPanel generalLookupPopular = new JPanel();
-        String[] fromOption = {
-                "All Students",
-                "All Instructors",
+        final String[] fromOption = {
                 "Students taking all my class",
                 "Instructors order by number of students"};
 
-        JComboBox<String> from = new JComboBox<String>(fromOption);
+        final JComboBox<String> from = new JComboBox<String>(fromOption);
         Label X = new Label("BuildIn Queries:");
         X.setFont(new Font("Serif", Font.PLAIN, 11));
         generalLookupPopular.add(X);
@@ -410,8 +434,33 @@ public class StatusPannel extends JPanel {
         botL.add(generalLookupPopular);
 
         JPanel generalLookupFunc = new JPanel();
-        generalLookupFunc.add(new JButton("Submit"));
-        generalLookupFunc.add(new JButton("Send Request"));
+        JButton sub = new JButton("Submit");
+        sub.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                int inid = sharedVariables.getInstance().getUid();
+                if (fromOption[from.getSelectedIndex()].equals("Students taking all my class")) {
+                    String finalQuery = "Select s.sid from students s where not exists(select * " +
+                            "from (select lid from lesson where inid="+inid+") l where not exists(select * " +
+                            "from register r where r.lid = l.lid and r.sid = s.sid))";
+                    MyModel m = querySender.selectGeneral(finalQuery);
+                    if (m == null) {
+                        popUpWarning("Something wrong","Invalid query");
+                    }
+                    generalTable.setModel(m);
+                } else if (fromOption[from.getSelectedIndex()].equals("Instructors order by number of students")) {
+                    String finalQuery = "Select s.inid, u.uname, count(*) from users u, students s where s.inid=u.uid " +
+                            "group by s.inid order by count(*)";
+                    MyModel m = querySender.selectGeneral(finalQuery);
+                    if (m == null) {
+                        popUpWarning("Something wrong","Invalid query");
+                    }
+                    generalTable.setModel(m);
+                }
+            }
+        });
+        generalLookupFunc.add(sub);
         JButton advancedButtonLeft = new JButton("Advanced Query");
         advancedButtonLeft.addActionListener(new ActionListener()
         {
@@ -434,15 +483,14 @@ public class StatusPannel extends JPanel {
         JPanel tpAggregation = new JPanel();
         JPanel midAggregation = new JPanel();
         JPanel botAggregation = new JPanel();
-        final String[] groupOption = {"none", "per lesson",
-                "per instructor", "per student", "(non-group) student", "(non-group) instructor"};
+        final String[] groupOption = {"none", "lesson", "(non-group) student", "(non-group) instructor"};
         final JComboBox<String> group = new JComboBox<String>(groupOption);
         final String[] operations = {"none","max", "min", "count", "avg"};
         final JComboBox<String> op = new JComboBox<String>(operations);
         final String[] appliedField = {"*", "age", "year"};
         final JComboBox<String> ap = new JComboBox<String>(appliedField);
         String[] operations2 = {"none","max", "min", "count", "avg"};
-        JComboBox<String> op2 = new JComboBox<String>(operations2);
+        final JComboBox<String> op2 = new JComboBox<String>(operations2);
         tpAggregation.add(new Label("Grouping:"));
         tpAggregation.add(group);
         midAggregation.add(new Label("Inner Op:"));
@@ -484,33 +532,51 @@ public class StatusPannel extends JPanel {
             {
                 String groupType = groupOption[group.getSelectedIndex()];
                 String operation = operations[op.getSelectedIndex()];
+                String operation2 = operations[op2.getSelectedIndex()];
                 String apply = appliedField[ap.getSelectedIndex()];
                 String select = "";
                 String from = "";
                 String where = "";
                 String gp = "";
 
-                if (apply.equals("none")) {
-                    select = "*";
-                }
+                if (op2.getSelectedIndex() == 0) {
+                    if (apply.equals("none")) {
+                        select = "*";
+                    }
+                    if (groupType.equals("lesson")) {
+                        select = "l.lid, " + operation + "(" + apply + ")";
+                        from = "lesson l, students s, users u";
+                        where = "l.inid=s.inid AND s.sid=u.uid";
+                        gp = "GROUP BY l.lid";
+                    } else if (groupType.equals("(non-group) student")) {
+                        select = operation + "(" + apply + ")";
+                        from = "users, students";
+                        where = "users.uid = students.sid";
+                    } else if (groupType.equals("(non-group) instructor")) {
+                        select = operation + "(" + apply + ")";
+                        from = "users, instructors";
+                        where = "users.uid = instructors.inid";
+                    }
+                } else {
+                    if (apply.equals("none")) {
+                        select = "*";
+                    }
 
-                if (groupType.equals("per student")) {
-
-                } else if (groupType.equals("per lesson")) {
-                    select = "l.lid, " + operation + "(" + apply + ")";
-                    from = "lesson l, students s, users u";
-                    where = "l.inid=s.inid AND s.sid=u.uid";
-                    gp = "GROUP BY l.lid";
-                } else if (groupType.equals("per instructor")) {
-
-                } else if (groupType.equals("(non-group) student")) {
-                    select = operation + "(" + apply + ")";
-                    from = "users, students";
-                    where = "users.uid = students.sid";
-                } else if (groupType.equals("(non-group) instructor")) {
-                    select = operation + "(" + apply + ")";
-                    from = "users, instructors";
-                    where = "users.uid = instructors.inid";
+                    if (groupType.equals("lesson")) {
+                        select = operation2 + "(x.m)";
+                        from = "(SELECT " + operation + "(" + apply + ") " +
+                                "AS m, r.lid FROM register r, users u WHERE r.sid=u.uid GROUP BY r.lid) x";
+                        where = "1=1";
+                        gp = "";
+                    } else if (groupType.equals("(non-group) student")) {
+                        select = operation + "(" + apply + ")";
+                        from = "users, students";
+                        where = "users.uid = students.sid";
+                    } else if (groupType.equals("(non-group) instructor")) {
+                        select = operation + "(" + apply + ")";
+                        from = "users, instructors";
+                        where = "users.uid = instructors.inid";
+                    }
                 }
 
                 String finalQuery = "SELECT " + select +
@@ -520,14 +586,13 @@ public class StatusPannel extends JPanel {
                     popUpWarning("Your input combination doesn't make sense","Invalid query");
                 }
                 aggregationTable.setModel(m);
+
             }
 
         });
 
         aggregationFunc.add(aggregationSubmit);
         botM.add(aggregationFunc);
-
-
 
 
         // Bot R
@@ -562,6 +627,14 @@ public class StatusPannel extends JPanel {
         c.setPreferredWidth(50);
         c = requestTable.getColumnModel().getColumn(1);
         c.setPreferredWidth(50);
+
+        x1.setText("Name: "+ sharedVariables.getInstance().getCurrentName());
+        x2.setText("Id: " + sharedVariables.getInstance().getUid());
+        x3.setText("Email: " + sharedVariables.getInstance().getEmail());
+        x4.setText("Age: " + sharedVariables.getInstance().getAge());
+        x5.setText("Address: " + sharedVariables.getInstance().getAddress());
+        x6.setText("Gender: " + sharedVariables.getInstance().getGender());
+
     }
 
     public void popUpWarning(String content, String title) {

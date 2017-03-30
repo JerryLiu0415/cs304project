@@ -394,6 +394,8 @@ public class CreateAndPopulateDBMain {
                     "INSERT INTO Register" +
                             "(sid, lid)" +
                             "VALUES" +
+                            "(135, 'L700')," +
+                            "(135, 'L706')," +
                             "(104, 'L701')," +
                             "(105, 'L703')," +
                             "(106, 'L703')," +

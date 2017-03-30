@@ -112,6 +112,21 @@ public class QueryAndUpdate {
         }
     }
 
+    // Finding Inst of student given inid
+    public MyModel findInstOf(int sid) {
+        try
+        {
+            rs = stmt.executeQuery("SELECT inid, uname FROM students, users WHERE " +
+                    "users.uid = inid AND students.sid = " + sid);
+            System.out.println("SELECT inid FROM students WHERE " +
+                    "students.sid = " + sid);
+
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
     // Finding details student given sid
     public MyModel findStudentDetail(int sid) {
         try
@@ -123,6 +138,26 @@ public class QueryAndUpdate {
             System.out.println("SELECT students.sid, users.uname, users.age, users.gender, users.address, " +
                     "users.phone, students.achievements, students.headline  FROM students, users WHERE " +
                     "students.sid = users.uid AND students.sid = " + sid);
+
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // Finding details of instructor given inid
+    public MyModel findInstDetail(int inid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT i.inid, u.uname, u.age, u.gender, " +
+                            "u.phone, i.year, i.style  FROM instructors i, users u WHERE " +
+                            "i.inid = u.uid AND i.inid = " + inid);
+            System.out.println("SELECT i.inid, u.uname, u.age, u.gender, " +
+                    "u.phone, i.year, i.style  FROM instructors i, users u WHERE " +
+                    "i.inid = u.uid AND i.inid = " + inid);
 
             return rsToModel(rs);
         } catch (SQLException ex) {
@@ -167,6 +202,23 @@ public class QueryAndUpdate {
         }
     }
 
+    // Finding lesson of sid
+    public MyModel findLessonOfStudent(int sid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT lesson.lid, lesson.inid FROM lesson, register WHERE " +
+                            "lesson.lid = register.lid AND register.sid = " + sid);
+            System.out.println("SELECT lesson.lid, lesson.inid FROM lesson, register WHERE " +
+                    "lesson.lid = register.lid AND register.sid = " + sid);
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     // Finding request record given inid
     public MyModel findRequestRecord(int inid) {
         try
@@ -177,6 +229,24 @@ public class QueryAndUpdate {
             System.out.println(
                     "SELECT * FROM Request WHERE " +
                             "Request.inid = " + inid);
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // Finding request record given sid
+    public MyModel findRequestRecordBySid(int sid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT * FROM Request WHERE " +
+                            "Request.sid = " + sid);
+            System.out.println(
+                    "SELECT * FROM Request WHERE " +
+                            "Request.sid = " + sid);
             return rsToModel(rs);
         } catch (SQLException ex) {
             System.out.println("Invalid Query");
@@ -213,6 +283,51 @@ public class QueryAndUpdate {
         }
     }
 
+    // Add a lesson
+    public void addLesson(String start, String end, String date, float price, int inid,
+                          String loc, int cap, int lid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "INSERT INTO Lesson" +
+                    "(lid, inid, loc, startTime, endTime, date, price, capacity)" +
+                            "VALUES" +
+                            "(" +lid+","+inid+","+singleQ(loc)+","+
+                            singleQ(start)+","+singleQ(end)+","+singleQ(date)+","+price+","+cap+")");
+            System.out.println(
+                    "INSERT INTO Lesson" +
+                            "(lid, inid, loc, startTime, endTime, date, price, capacity)" +
+                            "VALUES" +
+                            "(" +lid+","+inid+","+singleQ(loc)+","+
+                            singleQ(start)+","+singleQ(end)+","+singleQ(date)+","+price+","+cap+")");
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // Add a lesson
+    public boolean addRequest(int sid, int inid) {
+        try
+        {
+            stmt.execute(
+                    "INSERT INTO Request" +
+                            "(sid, inid)" +
+                            "VALUES" +
+                            "("+sid+","+inid+")");
+            System.out.println(
+                    "INSERT INTO Request" +
+                            "(sid, inid)" +
+                            "VALUES" +
+                            "("+sid+","+inid+")");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     // Delete a lesson
     public void deleteLesson(String lid) {
         try
@@ -221,6 +336,20 @@ public class QueryAndUpdate {
                     "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
             System.out.println(
                     "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // Delete a registration
+    public void deleteRegister(int sid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "DELETE FROM register WHERE register.sid = " + sid);
+            System.out.println(
+                    "DELETE FROM register WHERE register.sid = " + sid);
         } catch (SQLException ex) {
             System.out.println("Invalid Query");
             ex.printStackTrace();
@@ -266,6 +395,7 @@ public class QueryAndUpdate {
             ex.printStackTrace();
         }
     }
+
 
     // General query
     public MyModel selectGeneral(String query) {

@@ -13,6 +13,12 @@ public class sharedVariables {
     private JTabbedPane MainPanel;
     private int uid = 902;
     private String lastGeneralQueryWherePortion = "";
+    private String gender;
+    private String email;
+    private String Address;
+    private String age;
+
+
 
 
 
@@ -30,7 +36,7 @@ public class sharedVariables {
         this.currentName = s;
     }
 
-    public String getCurrentName(int a) {
+    public String getCurrentName() {
         return currentName;
     }
 
@@ -56,5 +62,41 @@ public class sharedVariables {
 
     public String getLastWhere() {
         return lastGeneralQueryWherePortion;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public static sharedVariables getSingleton() {
+        return singleton;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getGender() {
+        return gender;
     }
 }

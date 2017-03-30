@@ -15,6 +15,7 @@ public class MainUI extends JFrame {
     private JPanel MainPanel = new JPanel();
     private AccountPannel account;
     private StatusPannel status;
+    private StatusPannelStudent studentStatus;
 
 
     private static DataBaseConnection dbconn = new DataBaseConnection();
@@ -56,10 +57,11 @@ public class MainUI extends JFrame {
 
         status = new StatusPannel(querySender);
         account = new AccountPannel(querySender);
+        studentStatus = new StatusPannelStudent(querySender);
 
         tabbedPane.addTab("Account", account);
-        tabbedPane.addTab("Status", status);
-        tabbedPane.addTab("Calendar", card1);
+        tabbedPane.addTab("Status(Instructor)", status);
+        tabbedPane.addTab("Status(Student)", studentStatus);
 
 
         MainPanel.add(tabbedPane, BorderLayout.CENTER);

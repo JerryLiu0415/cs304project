@@ -53,8 +53,24 @@ public class AccountPannel extends JPanel {
                     }
                     else {
                         popUpMessage("Successfully log in as: " + matchingName,"LoginSuccessful");
+                        String query = "SELECT * FROM USERS WHERE uid="+id;
+                        MyModel m = querySender.selectGeneral(query);
+                        System.out.println(m.data.get(0).get(3));
+
+                        sharedVariables.getInstance().setGender(m.data.get(0).get(3));
+                        System.out.println(sharedVariables.getInstance().getGender());
+                        sharedVariables.getInstance().setEmail(m.data.get(0).get(5));
+                        sharedVariables.getInstance().setAddress(m.data.get(0).get(4));
+                        sharedVariables.getInstance().setAge(m.data.get(0).get(2));
                         sharedVariables.getInstance().setUid(id);
-                        sharedVariables.getInstance().getMainPanel().setSelectedIndex(1);
+                        sharedVariables.getInstance().setCurrentName(matchingName);
+                        System.out.println(m.data.get(0).get(7));
+                        if (Integer.parseInt(m.data.get(0).get(7)) == 0) {
+                            sharedVariables.getInstance().getMainPanel().setSelectedIndex(2);
+                        }
+                        else {
+                            sharedVariables.getInstance().getMainPanel().setSelectedIndex(1);
+                        }
                     }
                 }
                 catch (NumberFormatException a) {
