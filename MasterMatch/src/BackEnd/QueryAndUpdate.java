@@ -1,9 +1,9 @@
 package BackEnd;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import UI.MyModel;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by Jerry on 2017-03-17.
@@ -47,6 +47,7 @@ public class QueryAndUpdate {
                 res = name;
             }
             // Empty string will be returned if given id-pw invalide
+            rs.close();
             return res;
         }
         catch (SQLException ex){
@@ -84,6 +85,7 @@ public class QueryAndUpdate {
             while (rs.next()) {
                 res = true;
             }
+            rs.close();
             return res;
         }
         catch (SQLException ex){
@@ -93,6 +95,191 @@ public class QueryAndUpdate {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
         return res;
+    }
+
+    // Finding Student of instructor given inid
+    public MyModel findStudentOf(int inid) {
+        try
+        {
+            rs = stmt.executeQuery("SELECT students.sid, users.uname FROM students, users WHERE " +
+                    "students.sid = users.uid AND students.inid = " + inid);
+            System.out.println("SELECT students.sid, users.uname FROM students, users WHERE " +
+                    "students.sid = users.uid AND students.inid = " + inid);
+
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    // Finding details student given sid
+    public MyModel findStudentDetail(int sid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT students.sid, users.uname, users.age, users.gender, users.address, " +
+                            "users.phone, students.achievements, students.headline  FROM students, users WHERE " +
+                            "students.sid = users.uid AND students.sid = " + sid);
+            System.out.println("SELECT students.sid, users.uname, users.age, users.gender, users.address, " +
+                    "users.phone, students.achievements, students.headline  FROM students, users WHERE " +
+                    "students.sid = users.uid AND students.sid = " + sid);
+
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // Finding details of lesson given lid
+    public MyModel findLessonDetail(String lid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT * FROM lesson WHERE " +
+                            "lesson.lid = " + "'" + lid + "'");
+            System.out.println("SELECT * FROM lesson WHERE " +
+                    "lesson.lid = " + "'" + lid + "'");
+
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // Finding lesson of uid
+    public MyModel findLessonOf(int uid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT lesson.lid, lesson.inid FROM lesson WHERE " +
+                            "lesson.inid = " + uid);
+            System.out.println("SELECT lesson.pid, lesson.inid FROM lesson WHERE " +
+                    "lesson.inid = " + uid);
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // Finding request record given inid
+    public MyModel findRequestRecord(int inid) {
+        try
+        {
+            rs = stmt.executeQuery(
+                    "SELECT * FROM Request WHERE " +
+                            "Request.inid = " + inid);
+            System.out.println(
+                    "SELECT * FROM Request WHERE " +
+                            "Request.inid = " + inid);
+            return rsToModel(rs);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    // "Delete a student" set a student's inid to null
+    public void deleteRelationShip(int sid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "UPDATE students SET students.inid = NULL WHERE students.sid = " + sid);
+            System.out.println(
+                    "UPDATE students SET students.inid = NULL WHERE students.sid = " + sid);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // "Add a student" set a student's inid to someone
+    public void addRelationShip(int sid, int init) {
+        try
+        {
+            stmt.executeUpdate(
+                    "UPDATE students SET students.inid = "+init+" WHERE students.sid = " + sid);
+            System.out.println(
+                    "UPDATE students SET students.inid = "+init+" WHERE students.sid = " + sid);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // Delete a lesson
+    public void deleteLesson(String lid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println(
+                    "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // Delete a request
+    public void deleteRequest(int sid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "DELETE FROM request WHERE request.sid = " + sid);
+            System.out.println(
+                    "DELETE FROM request WHERE request.sid = " + sid);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // Update a lesson, including its starting, finishing time and date
+    public void updateLesson(String start, String end, String date, float price, String lid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "UPDATE Lesson SET Lesson.startTime = "+singleQ(start)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println(
+                    "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
+            stmt.executeUpdate(
+                    "UPDATE Lesson SET Lesson.endTime = "+singleQ(end)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println(
+                    "UPDATE Lesson SET Lesson.endTime = "+singleQ(end)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            stmt.executeUpdate(
+                    "UPDATE Lesson SET Lesson.date = "+singleQ(date)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println(
+                    "UPDATE Lesson SET Lesson.date = "+singleQ(date)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            stmt.executeUpdate(
+                    "UPDATE Lesson SET Lesson.price = "+price+" WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println(
+                    "UPDATE Lesson SET Lesson.price = "+price+" WHERE Lesson.lid = " + "'" + lid + "'");
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
+    // General query
+    public MyModel selectGeneral(String query) {
+        try
+        {
+            rs = stmt.executeQuery(query);
+            System.out.println(query);
+            return rsToModel(rs);
+
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+            return null;
+        }
     }
 
 
@@ -161,6 +348,41 @@ public class QueryAndUpdate {
         }
 
     }
+
+    // Helper functions
+    // Function that convers a resultset to custom table model
+    public static MyModel rsToModel(ResultSet rs) {
+        try {
+            ResultSetMetaData metaData = rs.getMetaData();
+
+            // names of columns
+            ArrayList<String> columnNames = new ArrayList<String>();
+            int columnCount = metaData.getColumnCount();
+            for (int column = 1; column <= columnCount; column++) {
+                columnNames.add(metaData.getColumnName(column));
+            }
+
+            ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+            while (rs.next()) {
+                ArrayList<String> currentRow = new ArrayList<String>();
+                for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+                    currentRow.add(rs.getString(columnIndex));
+                }
+                data.add(currentRow);
+            }
+
+
+            return new MyModel(data, columnNames);
+
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    public String singleQ(String s) {
+        return "'" + s + "'";
+    }
+
 
 
 }

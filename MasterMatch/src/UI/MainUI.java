@@ -12,7 +12,7 @@ import java.awt.*;
  */
 
 public class MainUI extends JFrame {
-    private JPanel MainPanel;
+    private JPanel MainPanel = new JPanel();
     private AccountPannel account;
     private StatusPannel status;
 
@@ -23,9 +23,11 @@ public class MainUI extends JFrame {
 
 
     public MainUI() {
+        MainPanel.setLayout(new GridLayout());
         querySender = new QueryAndUpdate(dbconn.conn);
         //Put the JComboBox in a JPanel to get a nicer look.
         JTabbedPane tabbedPane = new JTabbedPane();
+        sharedVariables.getInstance().setMainPanel(tabbedPane);
 
         //Create the "cards".
         JPanel card1 = new JPanel() {
@@ -52,12 +54,13 @@ public class MainUI extends JFrame {
         holder.add(new Button("II"));
         card1.add(holder);
 
-        status = new StatusPannel();
+        status = new StatusPannel(querySender);
         account = new AccountPannel(querySender);
 
         tabbedPane.addTab("Account", account);
         tabbedPane.addTab("Status", status);
         tabbedPane.addTab("Calendar", card1);
+
 
         MainPanel.add(tabbedPane, BorderLayout.CENTER);
 

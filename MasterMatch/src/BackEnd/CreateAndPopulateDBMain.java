@@ -387,27 +387,30 @@ public class CreateAndPopulateDBMain {
                             "lid CHAR (10) NOT NULL," +
                             "PRIMARY KEY (sid, lid)," +
                             "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (lid) REFERENCES Lesson (lid))";
-            String insertRegister=
+                            "FOREIGN KEY (lid) REFERENCES Lesson (lid) " +
+                            "ON DELETE CASCADE)";
+
+            String insertRegister =
                     "INSERT INTO Register" +
                             "(sid, lid)" +
                             "VALUES" +
-                            "(104, 901)," +
-                            "(105, 902)," +
-                            "(106, 902)," +
-                            "(107, 902)," +
-                            "(110, 902)," +
-                            "(114, 903)," +
-                            "(119, 904)," +
-                            "(133, 907)," +
-                            "(130, 906)," +
-                            "(135, 908)," +
-                            "(126, 905)," +
-                            "(121, 905)" ;
+                            "(104, 'L701')," +
+                            "(105, 'L703')," +
+                            "(106, 'L703')," +
+                            "(107, 'L703')," +
+                            "(110, 'L703')," +
+                            "(114, 'L702')," +
+                            "(119, 'L709')," +
+                            "(133, 'L711')," +
+                            "(130, 'L708')," +
+                            "(135, 'L707')," +
+                            "(126, 'L704')," +
+                            "(121, 'L704')" ;
 
 
 
             stmt.execute(addRegister);
+
 
             // Execute all insertion statements here, they are ordered in parent -> child way
             // Keep the order of the executes to this
@@ -423,6 +426,7 @@ public class CreateAndPopulateDBMain {
             stmt.execute(insertPl);
             stmt.execute(insertBook);
             stmt.execute(insertLesson);
+            stmt.execute(insertRegister);
 
 
 

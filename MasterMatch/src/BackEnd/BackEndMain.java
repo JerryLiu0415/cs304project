@@ -10,6 +10,5 @@ public class BackEndMain {
         DataBaseConnection dbconn = new DataBaseConnection();
         dbconn.connect();
 
-        // Put any code here for testing behaviour
     }
 }

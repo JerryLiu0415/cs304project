@@ -53,6 +53,8 @@ public class AccountPannel extends JPanel {
                     }
                     else {
                         popUpMessage("Successfully log in as: " + matchingName,"LoginSuccessful");
+                        sharedVariables.getInstance().setUid(id);
+                        sharedVariables.getInstance().getMainPanel().setSelectedIndex(1);
                     }
                 }
                 catch (NumberFormatException a) {
@@ -188,8 +190,4 @@ public class AccountPannel extends JPanel {
                 title,
                 JOptionPane.WARNING_MESSAGE);
     }
-
-
-
-
 }
