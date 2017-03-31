@@ -29,6 +29,8 @@ public class MainUI extends JFrame {
         //Put the JComboBox in a JPanel to get a nicer look.
         JTabbedPane tabbedPane = new JTabbedPane();
         sharedVariables.getInstance().setMainPanel(tabbedPane);
+        sharedVariables.getInstance().setInstPanel(status);
+        sharedVariables.getInstance().setStudPanel(studentStatus);
 
         //Create the "cards".
         JPanel card1 = new JPanel() {

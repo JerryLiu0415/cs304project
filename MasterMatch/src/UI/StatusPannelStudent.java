@@ -195,7 +195,7 @@ public class StatusPannelStudent extends JPanel {
         topLeftP2S.setLayout(new BoxLayout(topLeftP2S, BoxLayout.Y_AXIS));
 
 
-        JButton TLP2B3 = new JButton("Dltp");
+        JButton TLP2B3 = new JButton("Dlt");
         TLP2B3.setPreferredSize(new Dimension(30,20));
         TLP2B3.addActionListener(new ActionListener()
         {
@@ -253,6 +253,7 @@ public class StatusPannelStudent extends JPanel {
                 detail.setContentPane(detailPane);
                 detail.setSize(new Dimension(300, 200));
                 detail.setVisible(true);
+                refresh();
 
             }
         });
@@ -346,9 +347,7 @@ public class StatusPannelStudent extends JPanel {
         JPanel generalLookupPopular = new JPanel();
 
 
-        Label X = new Label("BuildIn Queries:");
-        X.setFont(new Font("Serif", Font.PLAIN, 11));
-        generalLookupPopular.add(X);
+
         botL.add(generalLookupPopular);
 
         JPanel generalLookupFunc = new JPanel();
@@ -474,11 +473,15 @@ public class StatusPannelStudent extends JPanel {
 
                 String finalQuery = "SELECT " + select +
                         " FROM " + from + " WHERE "+ where + " " + gp;
+                System.out.println("Executing query: ");
+                System.out.println(finalQuery);
                 MyModel m = querySender.selectGeneral(finalQuery);
                 if (m == null) {
                     popUpWarning("Your input combination doesn't make sense","Invalid query");
                 }
-                aggregationTable.setModel(m);
+                else {
+                    aggregationTable.setModel(m);
+                }
 
             }
 

@@ -190,7 +190,6 @@ public class AdvancedFilter extends JFrame {
         Filter2I.add(ZI2);
         instructor.add(Filter2I);
 
-        JPanel martialArtsType = new JPanel();
 
         JButton submit = new JButton("Submit");
         submit.addActionListener(new ActionListener()
@@ -278,7 +277,6 @@ public class AdvancedFilter extends JFrame {
 
         tabbedPane.addTab("Find Students",student);
         tabbedPane.addTab("Find Instructors",instructor);
-        tabbedPane.addTab("Find martialArtsTypes",martialArtsType);
         main.add(tabbedPane);
         main.add(submit);
         this.setContentPane(main);

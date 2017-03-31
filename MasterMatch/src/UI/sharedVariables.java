@@ -11,6 +11,8 @@ public class sharedVariables {
     private static sharedVariables singleton = new sharedVariables( );
     private String currentName;
     private JTabbedPane MainPanel;
+    private StatusPannel instPanel;
+    private StatusPannelStudent studPanel;
     private int uid = 902;
     private String lastGeneralQueryWherePortion = "";
     private String gender;
@@ -98,5 +100,21 @@ public class sharedVariables {
 
     public String getGender() {
         return gender;
+    }
+
+    public StatusPannel getInstPanel() {
+        return instPanel;
+    }
+
+    public StatusPannelStudent getStudPanel() {
+        return studPanel;
+    }
+
+    public void setStudPanel(StatusPannelStudent studPanel) {
+        this.studPanel = studPanel;
+    }
+
+    public void setInstPanel(StatusPannel instPanel) {
+        this.instPanel = instPanel;
     }
 }

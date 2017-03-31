@@ -103,6 +103,7 @@ public class QueryAndUpdate {
         {
             rs = stmt.executeQuery("SELECT students.sid, users.uname FROM students, users WHERE " +
                     "students.sid = users.uid AND students.inid = " + inid);
+            System.out.println("Trying to find students of " + inid + " In SQL form: ");
             System.out.println("SELECT students.sid, users.uname FROM students, users WHERE " +
                     "students.sid = users.uid AND students.inid = " + inid);
 
@@ -118,8 +119,9 @@ public class QueryAndUpdate {
         {
             rs = stmt.executeQuery("SELECT inid, uname FROM students, users WHERE " +
                     "users.uid = inid AND students.sid = " + sid);
-            System.out.println("SELECT inid FROM students WHERE " +
-                    "students.sid = " + sid);
+            System.out.println("Trying to find instructor of " + sid + " In SQL form: ");
+            System.out.println("SELECT inid, uname FROM students, users WHERE " +
+                    "users.uid = inid AND students.sid = " + sid);
 
             return rsToModel(rs);
         } catch (SQLException ex) {
@@ -135,6 +137,7 @@ public class QueryAndUpdate {
                     "SELECT students.sid, users.uname, users.age, users.gender, users.address, " +
                             "users.phone, students.achievements, students.headline  FROM students, users WHERE " +
                             "students.sid = users.uid AND students.sid = " + sid);
+            System.out.println("Trying to find detail of " + sid + " by joining user and student table. In SQL form: ");
             System.out.println("SELECT students.sid, users.uname, users.age, users.gender, users.address, " +
                     "users.phone, students.achievements, students.headline  FROM students, users WHERE " +
                     "students.sid = users.uid AND students.sid = " + sid);
@@ -155,6 +158,7 @@ public class QueryAndUpdate {
                     "SELECT i.inid, u.uname, u.age, u.gender, " +
                             "u.phone, i.year, i.style  FROM instructors i, users u WHERE " +
                             "i.inid = u.uid AND i.inid = " + inid);
+            System.out.println("Trying to find detail of " + inid + " by joining user and instructor table. In SQL form: ");
             System.out.println("SELECT i.inid, u.uname, u.age, u.gender, " +
                     "u.phone, i.year, i.style  FROM instructors i, users u WHERE " +
                     "i.inid = u.uid AND i.inid = " + inid);
@@ -174,6 +178,7 @@ public class QueryAndUpdate {
             rs = stmt.executeQuery(
                     "SELECT * FROM lesson WHERE " +
                             "lesson.lid = " + "'" + lid + "'");
+            System.out.println("Trying to find detail of " + lid + " In SQL form: ");
             System.out.println("SELECT * FROM lesson WHERE " +
                     "lesson.lid = " + "'" + lid + "'");
 
@@ -192,7 +197,8 @@ public class QueryAndUpdate {
             rs = stmt.executeQuery(
                     "SELECT lesson.lid, lesson.inid FROM lesson WHERE " +
                             "lesson.inid = " + uid);
-            System.out.println("SELECT lesson.pid, lesson.inid FROM lesson WHERE " +
+            System.out.println("Trying to find lessons of instructor " + uid + " In SQL form: ");
+            System.out.println("SELECT lesson.lid, lesson.inid FROM lesson WHERE " +
                     "lesson.inid = " + uid);
             return rsToModel(rs);
         } catch (SQLException ex) {
@@ -209,6 +215,7 @@ public class QueryAndUpdate {
             rs = stmt.executeQuery(
                     "SELECT lesson.lid, lesson.inid FROM lesson, register WHERE " +
                             "lesson.lid = register.lid AND register.sid = " + sid);
+            System.out.println("Trying to find lessons of student " + sid + " In SQL form: ");
             System.out.println("SELECT lesson.lid, lesson.inid FROM lesson, register WHERE " +
                     "lesson.lid = register.lid AND register.sid = " + sid);
             return rsToModel(rs);
@@ -226,6 +233,7 @@ public class QueryAndUpdate {
             rs = stmt.executeQuery(
                     "SELECT * FROM Request WHERE " +
                             "Request.inid = " + inid);
+            System.out.println("Trying to find requests of instructor " + inid + " In SQL form: ");
             System.out.println(
                     "SELECT * FROM Request WHERE " +
                             "Request.inid = " + inid);
@@ -244,6 +252,7 @@ public class QueryAndUpdate {
             rs = stmt.executeQuery(
                     "SELECT * FROM Request WHERE " +
                             "Request.sid = " + sid);
+            System.out.println("Trying to find requests of student " + sid + " In SQL form: ");
             System.out.println(
                     "SELECT * FROM Request WHERE " +
                             "Request.sid = " + sid);
@@ -261,6 +270,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "UPDATE students SET students.inid = NULL WHERE students.sid = " + sid);
+            System.out.println("Setting inid field of " + sid + " to null. In SQL form: ");
             System.out.println(
                     "UPDATE students SET students.inid = NULL WHERE students.sid = " + sid);
         } catch (SQLException ex) {
@@ -275,6 +285,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "UPDATE students SET students.inid = "+init+" WHERE students.sid = " + sid);
+            System.out.println("Setting inid field of " + sid + " to "+ init +". In SQL form: ");
             System.out.println(
                     "UPDATE students SET students.inid = "+init+" WHERE students.sid = " + sid);
         } catch (SQLException ex) {
@@ -294,6 +305,7 @@ public class QueryAndUpdate {
                             "VALUES" +
                             "(" +lid+","+inid+","+singleQ(loc)+","+
                             singleQ(start)+","+singleQ(end)+","+singleQ(date)+","+price+","+cap+")");
+            System.out.println("Add a lesson. In SQL form: ");
             System.out.println(
                     "INSERT INTO Lesson" +
                             "(lid, inid, loc, startTime, endTime, date, price, capacity)" +
@@ -315,6 +327,7 @@ public class QueryAndUpdate {
                             "(sid, inid)" +
                             "VALUES" +
                             "("+sid+","+inid+")");
+            System.out.println("Add a request. In SQL form: ");
             System.out.println(
                     "INSERT INTO Request" +
                             "(sid, inid)" +
@@ -334,6 +347,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println("Remove a lesson. In SQL form: ");
             System.out.println(
                     "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
         } catch (SQLException ex) {
@@ -348,6 +362,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "DELETE FROM register WHERE register.sid = " + sid);
+            System.out.println("Remove a register record. In SQL form: ");
             System.out.println(
                     "DELETE FROM register WHERE register.sid = " + sid);
         } catch (SQLException ex) {
@@ -362,6 +377,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "DELETE FROM request WHERE request.sid = " + sid);
+            System.out.println("Remove a request record. In SQL form: ");
             System.out.println(
                     "DELETE FROM request WHERE request.sid = " + sid);
         } catch (SQLException ex) {
@@ -376,6 +392,7 @@ public class QueryAndUpdate {
         {
             stmt.executeUpdate(
                     "UPDATE Lesson SET Lesson.startTime = "+singleQ(start)+" WHERE Lesson.lid = " + "'" + lid + "'");
+            System.out.println("Update a lesson. SQL: ");
             System.out.println(
                     "DELETE FROM Lesson WHERE Lesson.lid = " + "'" + lid + "'");
             stmt.executeUpdate(
@@ -402,6 +419,7 @@ public class QueryAndUpdate {
         try
         {
             rs = stmt.executeQuery(query);
+            System.out.println("Executing query: ");
             System.out.println(query);
             return rsToModel(rs);
 

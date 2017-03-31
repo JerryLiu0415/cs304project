@@ -4,6 +4,7 @@ import BackEnd.QueryAndUpdate;
 import UI.SubViews.AdvancedFilter;
 import UI.SubViews.lessonAddPopUp;
 import UI.SubViews.lessonTimePopUp;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -13,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 /**
  * Created by Jerry on 2017-03-20.
@@ -36,6 +36,9 @@ public class StatusPannel extends JPanel {
 
 
     public StatusPannel(final QueryAndUpdate querySender) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
         this.querySender = querySender;
         this.setLayout(new GridLayout(2,0));
 
@@ -119,6 +122,7 @@ public class StatusPannel extends JPanel {
         JPanel topLeftP1S = new JPanel();
         topLeftP1S.setLayout(new BoxLayout(topLeftP1S, BoxLayout.Y_AXIS));
         JButton TLP1B1 = new JButton("Info");
+        TLP1B1.setToolTipText("Select a row and click on info to get students' details");
         TLP1B1.setPreferredSize(new Dimension(30,20));
         TLP1B1.addActionListener(new ActionListener()
         {
@@ -133,45 +137,51 @@ public class StatusPannel extends JPanel {
                     ArrayList<String> row = querySender.findStudentDetail(sid).data.get(0);
                     m.addRow(row);
                 }
-                detailTable.setModel(m);
+                if (m != null) {
+                    detailTable.setModel(m);
 
-                JFrame detail = new JFrame();
-                detail.setTitle("Details");
-                JPanel detailPane = new JPanel();
+                    JFrame detail = new JFrame();
+                    detail.setTitle("Details");
+                    JPanel detailPane = new JPanel();
 
-                TableColumn c = null;
-                c = detailTable.getColumnModel().getColumn(0);
-                c.setPreferredWidth(30);
-                c = detailTable.getColumnModel().getColumn(1);
-                c.setPreferredWidth(90);
-                c = detailTable.getColumnModel().getColumn(2);
-                c.setPreferredWidth(30);
-                c = detailTable.getColumnModel().getColumn(3);
-                c.setPreferredWidth(50);
-                c = detailTable.getColumnModel().getColumn(4);
-                c.setPreferredWidth(150);
-                c = detailTable.getColumnModel().getColumn(5);
-                c.setPreferredWidth(100);
-                c = detailTable.getColumnModel().getColumn(6);
-                c.setPreferredWidth(150);
-                c = detailTable.getColumnModel().getColumn(7);
-                c.setPreferredWidth(450);
+                    TableColumn c = null;
+                    c = detailTable.getColumnModel().getColumn(0);
+                    c.setPreferredWidth(30);
+                    c = detailTable.getColumnModel().getColumn(1);
+                    c.setPreferredWidth(90);
+                    c = detailTable.getColumnModel().getColumn(2);
+                    c.setPreferredWidth(30);
+                    c = detailTable.getColumnModel().getColumn(3);
+                    c.setPreferredWidth(50);
+                    c = detailTable.getColumnModel().getColumn(4);
+                    c.setPreferredWidth(150);
+                    c = detailTable.getColumnModel().getColumn(5);
+                    c.setPreferredWidth(100);
+                    c = detailTable.getColumnModel().getColumn(6);
+                    c.setPreferredWidth(150);
+                    c = detailTable.getColumnModel().getColumn(7);
+                    c.setPreferredWidth(450);
 
-                detailTable.setShowGrid(true);
-                detailTable.setGridColor(Color.BLACK);
+                    detailTable.setShowGrid(true);
+                    detailTable.setGridColor(Color.BLACK);
 
-                JScrollPane detailS = new JScrollPane(detailTable);
-                detailS.setPreferredSize(new Dimension(1000, 400));
+                    JScrollPane detailS = new JScrollPane(detailTable);
+                    detailS.setPreferredSize(new Dimension(1000, 400));
 
 
-                detailPane.add(detailS);
-                detail.setContentPane(detailPane);
-                detail.setSize(new Dimension(1000, 400));
-                detail.setVisible(true);
+                    detailPane.add(detailS);
+                    detail.setContentPane(detailPane);
+                    detail.setSize(new Dimension(1000, 400));
+                    detail.setVisible(true);
+                }
+                else {
+                    popUpWarning("Invalid query", "Error");
+                }
 
             }
         });
         JButton TLP1B2 = new JButton("Del");
+        TLP1B2.setToolTipText("Select a row and click on Del to remove a student ");
         TLP1B2.setPreferredSize(new Dimension(30,20));
         TLP1B2.addActionListener(new ActionListener()
         {
@@ -199,6 +209,7 @@ public class StatusPannel extends JPanel {
         JPanel topLeftP2S = new JPanel();
         topLeftP2S.setLayout(new BoxLayout(topLeftP2S, BoxLayout.Y_AXIS));
         JButton TLP2B1 = new JButton("Info");
+        TLP2B1.setToolTipText("Select a row and click on Info to get lesson details");
         TLP2B1.setPreferredSize(new Dimension(30,20));
         TLP2B1.addActionListener(new ActionListener()
         {
@@ -214,32 +225,37 @@ public class StatusPannel extends JPanel {
                     ArrayList<String> row = querySender.findLessonDetail(lid).data.get(0);
                     m.addRow(row);
                 }
-                detailTable.setModel(m);
-                JFrame detail = new JFrame();
-                detail.setTitle("Details");
-                JPanel detailPane = new JPanel();
+                if (m != null) {
+                    detailTable.setModel(m);
+                    JFrame detail = new JFrame();
+                    detail.setTitle("Details");
+                    JPanel detailPane = new JPanel();
 
-                TableColumn c = null;
-                c = detailTable.getColumnModel().getColumn(0);
-                c.setPreferredWidth(30);
-                c = detailTable.getColumnModel().getColumn(1);
-                c.setPreferredWidth(30);
+                    TableColumn c = null;
+                    c = detailTable.getColumnModel().getColumn(0);
+                    c.setPreferredWidth(30);
+                    c = detailTable.getColumnModel().getColumn(1);
+                    c.setPreferredWidth(30);
 
-                detailTable.setShowGrid(true);
-                detailTable.setGridColor(Color.BLACK);
+                    detailTable.setShowGrid(true);
+                    detailTable.setGridColor(Color.BLACK);
 
-                JScrollPane detailS = new JScrollPane(detailTable);
-                detailS.setPreferredSize(new Dimension(1000, 400));
+                    JScrollPane detailS = new JScrollPane(detailTable);
+                    detailS.setPreferredSize(new Dimension(1000, 400));
 
 
-                detailPane.add(detailS);
-                detail.setContentPane(detailPane);
-                detail.setSize(new Dimension(1000, 400));
-                detail.setVisible(true);
+                    detailPane.add(detailS);
+                    detail.setContentPane(detailPane);
+                    detail.setSize(new Dimension(1000, 400));
+                    detail.setVisible(true);
+                } else {
+                    popUpWarning("Invalid query", "Error");
+                }
 
             }
         });
         JButton TLP2B2 = new JButton("Del");
+        TLP2B2.setToolTipText("Select a row and click on Del to remove a lesson");
         TLP2B2.setPreferredSize(new Dimension(30,20));
         TLP2B2.addActionListener(new ActionListener()
         {
@@ -257,6 +273,7 @@ public class StatusPannel extends JPanel {
 
 
         JButton TLP2B3 = new JButton("Upd");
+        TLP2B3.setToolTipText("Update selected lesson");
         TLP2B3.setPreferredSize(new Dimension(30,20));
         TLP2B3.addActionListener(new ActionListener()
         {
@@ -271,6 +288,7 @@ public class StatusPannel extends JPanel {
         });
 
         JButton TLP2B4 = new JButton("Add");
+        TLP2B4.setToolTipText("Add a lesson");
         TLP2B4.setPreferredSize(new Dimension(30,20));
         TLP2B4.addActionListener(new ActionListener()
         {
@@ -302,6 +320,7 @@ public class StatusPannel extends JPanel {
         JPanel topLeftP3S = new JPanel();
         topLeftP3S.setLayout(new BoxLayout(topLeftP3S, BoxLayout.Y_AXIS));
         JButton TLP3B1 = new JButton("Rej");
+        TLP3B1.setToolTipText("Reject selected request");
         TLP3B1.setPreferredSize(new Dimension(30,20));
         TLP3B1.addActionListener(new ActionListener()
         {
@@ -318,6 +337,7 @@ public class StatusPannel extends JPanel {
         });
 
         JButton TLP3B2 = new JButton("Acp");
+        TLP3B2.setToolTipText("Accept selected request");
         TLP3B2.setPreferredSize(new Dimension(30,20));
         TLP3B2.addActionListener(new ActionListener()
         {
@@ -330,7 +350,7 @@ public class StatusPannel extends JPanel {
                     querySender.addRelationShip(sid, sharedVariables.getInstance().getUid());
                 }
                 refresh();
-                popUpWarning("Student(s) rejected!","Deletion Performed");
+                popUpWarning("Student(s) accepted!","Deletion Performed");
             }
         });
 
@@ -354,6 +374,7 @@ public class StatusPannel extends JPanel {
         topLeftTalbePanel.add(topLeftP3);
         topLeft.add(topLeftTalbePanel);
         JButton refreshRelationships = new JButton("Refresh");
+        refreshRelationships.setToolTipText("Refresh relationship panel");
         refreshRelationships.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -435,6 +456,7 @@ public class StatusPannel extends JPanel {
 
         JPanel generalLookupFunc = new JPanel();
         JButton sub = new JButton("Submit");
+        sub.setToolTipText("Submit build in query");
         sub.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -444,6 +466,8 @@ public class StatusPannel extends JPanel {
                     String finalQuery = "Select s.sid from students s where not exists(select * " +
                             "from (select lid from lesson where inid="+inid+") l where not exists(select * " +
                             "from register r where r.lid = l.lid and r.sid = s.sid))";
+                    System.out.println("Executing query: ");
+                    System.out.println(finalQuery);
                     MyModel m = querySender.selectGeneral(finalQuery);
                     if (m == null) {
                         popUpWarning("Something wrong","Invalid query");
@@ -452,6 +476,8 @@ public class StatusPannel extends JPanel {
                 } else if (fromOption[from.getSelectedIndex()].equals("Instructors order by number of students")) {
                     String finalQuery = "Select s.inid, u.uname, count(*) from users u, students s where s.inid=u.uid " +
                             "group by s.inid order by count(*)";
+                    System.out.println("Executing query: ");
+                    System.out.println(finalQuery);
                     MyModel m = querySender.selectGeneral(finalQuery);
                     if (m == null) {
                         popUpWarning("Something wrong","Invalid query");
@@ -462,6 +488,7 @@ public class StatusPannel extends JPanel {
         });
         generalLookupFunc.add(sub);
         JButton advancedButtonLeft = new JButton("Advanced Query");
+        advancedButtonLeft.setToolTipText("Further specify your query");
         advancedButtonLeft.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -581,11 +608,15 @@ public class StatusPannel extends JPanel {
 
                 String finalQuery = "SELECT " + select +
                         " FROM " + from + " WHERE "+ where + " " + gp;
+                System.out.println("Executing query: ");
+                System.out.println(finalQuery);
                 MyModel m = querySender.selectGeneral(finalQuery);
                 if (m == null) {
                     popUpWarning("Your input combination doesn't make sense","Invalid query");
                 }
-                aggregationTable.setModel(m);
+                else {
+                    aggregationTable.setModel(m);
+                }
 
             }
 
@@ -596,12 +627,11 @@ public class StatusPannel extends JPanel {
 
 
         // Bot R
-        JPanel botR = new JPanel();
-        botR.setBorder(BorderFactory.createTitledBorder("Stats summary"));
+
 
         bot.add(botL);
         bot.add(botM);
-        bot.add(botR);
+
 
         this.add(bot);
 
