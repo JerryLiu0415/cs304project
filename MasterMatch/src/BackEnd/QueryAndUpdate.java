@@ -371,6 +371,21 @@ public class QueryAndUpdate {
         }
     }
 
+    // Delete a user
+    public void deleteUser(int uid) {
+        try
+        {
+            stmt.executeUpdate(
+                    "DELETE FROM users WHERE users.uid = " + uid);
+            System.out.println("Remove a user. In SQL form: ");
+            System.out.println(
+                    "DELETE FROM users WHERE users.uid = " + uid);
+        } catch (SQLException ex) {
+            System.out.println("Invalid Query");
+            ex.printStackTrace();
+        }
+    }
+
     // Delete a request
     public void deleteRequest(int sid) {
         try

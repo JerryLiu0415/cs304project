@@ -4,7 +4,6 @@ import BackEnd.QueryAndUpdate;
 import UI.SubViews.AdvancedFilter;
 import UI.SubViews.lessonAddPopUp;
 import UI.SubViews.lessonTimePopUp;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -36,8 +35,6 @@ public class StatusPannel extends JPanel {
 
 
     public StatusPannel(final QueryAndUpdate querySender) {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
 
         this.querySender = querySender;
         this.setLayout(new GridLayout(2,0));

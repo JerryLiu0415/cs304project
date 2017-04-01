@@ -132,8 +132,8 @@ public class CreateAndPopulateDBMain {
                             "headline VARCHAR (800)," +
                             "sid INT NOT NULL," +
                             "inid INT," +
-                            "FOREIGN KEY (sid) REFERENCES Users(uid)," +
-                            "FOREIGN KEY (inid) REFERENCES Instructors(inid))";
+                            "FOREIGN KEY (sid) REFERENCES Users(uid) ON DELETE CASCADE," +
+                            "FOREIGN KEY (inid) REFERENCES Instructors(inid) ON DELETE CASCADE)";
             // an example of headline could be "searching for a passionate KungFu instructor"
 
 
@@ -190,8 +190,8 @@ public class CreateAndPopulateDBMain {
                             "style CHAR (20)," +
                             "headline VARCHAR (400)," +
                             "inid INT NOT NULL," +
-                            "FOREIGN KEY (inid) REFERENCES Users(uid)," +
-                            "FOREIGN KEY (style) REFERENCES MartialArtsType(style))";
+                            "FOREIGN KEY (inid) REFERENCES Users(uid) ON DELETE CASCADE," +
+                            "FOREIGN KEY (style) REFERENCES MartialArtsType(style) ON DELETE CASCADE)";
             // an example of headline could be "Upcoming group lesson of 20 in ST building"
 
 
@@ -255,8 +255,8 @@ public class CreateAndPopulateDBMain {
                             "sid INT, " +
                             "inid INT, " +
                             "PRIMARY KEY (sid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students(sid), " +
-                            "FOREIGN KEY (inid) REFERENCES Instructors(inid))";
+                            "FOREIGN KEY (sid) REFERENCES Students(sid) ON DELETE CASCADE, " +
+                            "FOREIGN KEY (inid) REFERENCES Instructors(inid) ON DELETE CASCADE)";
 
             stmt.execute(addRequest);
 
@@ -290,7 +290,7 @@ public class CreateAndPopulateDBMain {
                             "endTime CHAR (5) NOT NULL," +
                             "date CHAR(20) NOT NULL," +
                             "PRIMARY KEY (plid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students (sid))" ;
+                            "FOREIGN KEY (sid) REFERENCES Students (sid) ON DELETE CASCADE)" ;
 
             stmt.execute(addPl);
 
@@ -320,8 +320,8 @@ public class CreateAndPopulateDBMain {
                             "sid INT NOT NULL," +
                             "plid CHAR (10) NOT NULL," +
                             "PRIMARY KEY (sid, plid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (plid) REFERENCES PLessons (plid))";
+                            "FOREIGN KEY (sid) REFERENCES Students (sid) ON DELETE CASCADE," +
+                            "FOREIGN KEY (plid) REFERENCES PLessons (plid) ON DELETE CASCADE)";
             // an example of headline could be "Upcoming group lesson of 20 in ST building"
 
             stmt.execute(addUserSchemaBook);
@@ -357,7 +357,7 @@ public class CreateAndPopulateDBMain {
                             "price FLOAT NOT NULL," +
                             "capacity INT NOT NULL," +
                             "PRIMARY KEY (lid)," +
-                            "FOREIGN KEY (inid) REFERENCES Instructors (inid))";
+                            "FOREIGN KEY (inid) REFERENCES Instructors (inid) ON DELETE CASCADE)";
             stmt.execute(addLesson);
 
             // Populate a tuple for lesson
@@ -386,8 +386,8 @@ public class CreateAndPopulateDBMain {
                             "sid INT NOT NULL,"+
                             "lid CHAR (10) NOT NULL," +
                             "PRIMARY KEY (sid, lid)," +
-                            "FOREIGN KEY (sid) REFERENCES Students (sid)," +
-                            "FOREIGN KEY (lid) REFERENCES Lesson (lid) " +
+                            "FOREIGN KEY (sid) REFERENCES Students (sid) ON DELETE CASCADE," +
+                            "FOREIGN KEY (lid) REFERENCES Lesson (lid)" +
                             "ON DELETE CASCADE)";
 
             String insertRegister =
